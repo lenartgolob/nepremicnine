@@ -2,109 +2,8 @@
 <html lang="en">
 
 <head>
-<style type="text/css">
-	body{
-		color: #fff;
-		font-family: 'Roboto', sans-serif;
-	}
-    .form-control{
-		height: 40px;
-		box-shadow: none;
-		color: #969fa4;
-	}
-	.form-control:focus{
-		border-color: #5cb85c;
-	}
-    .form-control, .btn{        
-        border-radius: 3px;
-    }
-	.signup-form{
-		width: 500px;
-		margin: 0 auto;
-		padding: 30px 0;
-	}
-	.signup-form h2{
-		color: #636363;
-        margin: 0 0 15px;
-		position: relative;
-		text-align: center;
-    }
-	.signup-form h2:before, .signup-form h2:after{
-		content: "";
-		height: 2px;
-		width: 30%;
-		background: #d4d4d4;
-		position: absolute;
-		top: 50%;
-		z-index: 2;
-	}	
-	.signup-form h2:before{
-		left: 0;
-	}
-	.signup-form h2:after{
-		right: 0;
-	}
-    .signup-form .hint-text{
-		color: #999;
-		margin-bottom: 30px;
-		text-align: center;
-	}
-    .signup-form form{
-		color: #999;
-		border-radius: 3px;
-    	margin-bottom: 15px;
-        background: #f2f3f7;
-        box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-        padding: 30px;
-    }
-	.signup-form .form-group{
-		margin-bottom: 20px;
-	}
-	.signup-form input[type="checkbox"]{
-		margin-top: 3px;
-	}
-	.signup-form .btn{        
-        font-size: 16px;
-        font-weight: bold;		
-		min-width: 140px;
-        outline: none !important;
-    }
-	.signup-form .row div:first-child{
-        padding-right: 15px;
-        padding-left: 15px;
-        width: 227px;
-        
-	}
-	.signup-form .row div:last-child{
-        padding-left: 15px;
-        width: 227px;
-	}    	
-    .signup-form a{
-		color: #fff;
-		text-decoration: underline;
-	}
-    .signup-form a:hover{
-		text-decoration: none;
-	}
-	.signup-form form a{
-		color: #5cb85c;
-		text-decoration: none;
-	}	
-	.signup-form form a:hover{
-		text-decoration: underline;
-    }  
-    
-    #navmain {
-    background-color: #212529;
-    padding: 20px;
-  }
-
-    #regform {
-        margin-top: 180px;
-    }
-</style>
-
   <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="css/registerStyle.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
@@ -129,41 +28,12 @@
 
 <body id="page-top">
 
-  <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
-    <div class="container" id="navmain">
-      <a class="navbar-brand js-scroll-trigger" href="index.php">Nepremicnine.net</a>
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        Menu
-        <i class="fas fa-bars"></i>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav text-uppercase ml-auto">
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="novogradnje.php">Novogradnje</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="montazne_hise.php">Montažne hiše</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="pocitnice.php">Na počitnice!</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="dom_gradnja.php">Dom in gradnja</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="podjetja.php">Podjetja</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="login.php">Prijava</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+ <?php
+    include_once "header.php";
+ ?>
 
   <div class="signup-form" id="regform">
-    <form action="/examples/actions/confirmation.php" method="post">
+    <form action="user_insert.php" method="post">
 		<h2>Register</h2>
 		<p class="hint-text">Create your account. It's free and only takes a minute.</p>
         <div class="form-group">
@@ -176,13 +46,13 @@
         	<input type="email" class="form-control" name="email" placeholder="Email" required="required">
         </div>
         <div class="form-group">
-            <input type="tel" class="form-control" name="telephone" placeholder="Telefon" pattern="[0-9]{9}" required="required">
+            <input type="tel" class="form-control" name="phone" placeholder="Telefon" pattern="[0-9]{9}" required="required">
         </div>
 		<div class="form-group">
-            <input type="password" class="form-control" name="password" placeholder="Geslo" required="required">
+            <input type="password" class="form-control" name="pass1" placeholder="Geslo" required="required">
         </div>
 		<div class="form-group">
-            <input type="password" class="form-control" name="confirm_password" placeholder="Ponovi geslo" required="required">
+            <input type="password" class="form-control" name="pass2" placeholder="Ponovi geslo" required="required">
         </div>        
         <div class="form-group">
 			<label class="checkbox-inline"><input type="checkbox" required="required"> I accept the <a href="#">Terms of Use</a> &amp; <a href="#">Privacy Policy</a></label>

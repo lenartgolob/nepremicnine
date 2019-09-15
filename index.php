@@ -27,49 +27,9 @@
 
 <body id="page-top">
 
-  <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
-    <div class="container">
-      <a class="navbar-brand js-scroll-trigger" href="index.php">Nepremicnine.net</a>
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        Menu
-        <i class="fas fa-bars"></i>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav text-uppercase ml-auto">
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="novogradnje.php">Novogradnje</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="montazne_hise.php">Montažne hiše</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="pocitnice.php">Na počitnice!</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="dom_gradnja.php">Dom in gradnja</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="podjetja.php">Podjetja</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="login.php">Prijava</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-
-  <!-- Header -->
-  <header class="masthead">
-    <div class="container">
-      <div class="intro-text">
-        <div class="intro-lead-in">Dobrodošli!</div>
-        <div class="intro-heading text-uppercase">NEPREMIČNINE.NET</div>
-        <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="login.php">Prijava</a>
-      </div>
-    </div>
-  </header>
+  <?php
+    include_once "index_header.php";
+  ?>
 
 
 
@@ -172,45 +132,9 @@
   </section>
 
 
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <div class="row align-items-center">
-        <div class="col-md-4">
-          <span class="copyright">Copyright &copy; Your Website 2019</span>
-        </div>
-        <div class="col-md-4">
-          <ul class="list-inline social-buttons">
-            <li class="list-inline-item">
-              <a href="https://twitter.com/Lenart123" target="_blank">
-                <i class="fab fa-twitter"></i>
-              </a>
-            </li>
-            <li class="list-inline-item">
-              <a href="#">
-                <i class="fab fa-facebook-f"></i>
-              </a>
-            </li>
-            <li class="list-inline-item">
-              <a href="https://www.facebook.com/lenart.golob" target="blank">
-                <i class="fab fa-linkedin-in"></i>
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div class="col-md-4">
-          <ul class="list-inline quicklinks">
-            <li class="list-inline-item">
-              <a href="#">Privacy Policy</a>
-            </li>
-            <li class="list-inline-item">
-              <a href="#">Terms of Use</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </footer>
+ <?php
+  include_once "footer.php";
+ ?>
 
   <!-- Portfolio Modals -->
 
