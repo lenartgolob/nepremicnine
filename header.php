@@ -1,3 +1,16 @@
+<?php
+include_once "session.php";
+
+if(isset($_SESSION['user_id'])){
+  $login = "Odjava";
+  $link = "odjava.php";
+}
+else {
+  $login = "Prijava";
+  $link = "login.php";
+}
+?>
+
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
     <div class="container" id="navmain">
@@ -24,7 +37,7 @@
             <a class="nav-link js-scroll-trigger" href="podjetja.php">Podjetja</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="login.php">Prijava</a>
+            <a class="nav-link js-scroll-trigger" href="<?php echo $link; ?>"><?php echo $login; ?></a>
           </li>
         </ul>
       </div>

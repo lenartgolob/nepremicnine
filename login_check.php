@@ -22,8 +22,8 @@ $pass = $_POST['pass'];
             header("Location: index.php");
             die();
         }
-        else echo "jbs";
+        header("Location: login.php?wrongpass");
     }
 
-//header("Location: login.php");
+header("Location: login.php?wrongpass");
 ?>

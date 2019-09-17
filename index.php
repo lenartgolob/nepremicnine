@@ -1,3 +1,6 @@
+<?php 
+include_once "session.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -28,9 +31,23 @@
 <body id="page-top">
 
   <?php
-    include_once "index_header.php";
+    include_once "header.php";
   ?>
 
+  <!-- Header -->
+  <header class="masthead">
+    <div class="container">
+      <div class="intro-text">
+        <div class="intro-lead-in">Dobrodošli!</div>
+        <div class="intro-heading text-uppercase">NEPREMIČNINE.NET</div>
+        <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="<?php echo $link ?>">
+        <?php
+          echo $login;
+        ?>
+        </a>
+      </div>
+    </div>
+  </header>
 
 
   <!-- Portfolio Grid -->
