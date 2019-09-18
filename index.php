@@ -1,5 +1,14 @@
 <?php 
 include_once "session.php";
+
+if(isset($_SESSION['user_id'])){
+  $objava = "Objavi oglas";
+  $linko = "objava_form.php";
+}
+else {
+  $objava = "Prijava";
+  $linko = "login.php";
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -40,9 +49,9 @@ include_once "session.php";
       <div class="intro-text">
         <div class="intro-lead-in">Dobrodošli!</div>
         <div class="intro-heading text-uppercase">NEPREMIČNINE.NET</div>
-        <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="<?php echo $link ?>">
+        <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="<?php echo $linko ?>">
         <?php
-          echo $login;
+          echo $objava;
         ?>
         </a>
       </div>
