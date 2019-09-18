@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gostitelj: 127.0.0.1
--- Čas nastanka: 10. sep 2019 ob 22.12
+-- Čas nastanka: 18. sep 2019 ob 20.49
 -- Različica strežnika: 10.1.28-MariaDB
 -- Različica PHP: 7.1.11
 
@@ -55,12 +55,25 @@ CREATE TABLE `kraji` (
 CREATE TABLE `nepremicnine` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `ime` varchar(100) COLLATE utf8mb4_slovenian_ci NOT NULL,
-  `opis` text COLLATE utf8mb4_slovenian_ci NOT NULL,
+  `opis1` text COLLATE utf8mb4_slovenian_ci NOT NULL,
+  `opis2` text COLLATE utf8mb4_slovenian_ci NOT NULL,
   `naslov` varchar(100) COLLATE utf8mb4_slovenian_ci NOT NULL,
-  `objava` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `objava` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `posredovanje` varchar(20) COLLATE utf8mb4_slovenian_ci NOT NULL,
+  `vrsta` varchar(20) COLLATE utf8mb4_slovenian_ci NOT NULL,
+  `lokacija` varchar(50) COLLATE utf8mb4_slovenian_ci NOT NULL,
+  `telefon` text COLLATE utf8mb4_slovenian_ci NOT NULL,
+  `parcela` double NOT NULL,
   `uporabnik_id` bigint(20) UNSIGNED NOT NULL,
-  `kraj_id` bigint(20) UNSIGNED NOT NULL
+  `kraj_id` bigint(20) UNSIGNED DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_slovenian_ci;
+
+--
+-- Odloži podatke za tabelo `nepremicnine`
+--
+
+INSERT INTO `nepremicnine` (`id`, `ime`, `opis1`, `opis2`, `naslov`, `objava`, `posredovanje`, `vrsta`, `lokacija`, `telefon`, `parcela`, `uporabnik_id`, `kraj_id`) VALUES
+(2, 'Hiša Pesje, Slabaaaa', ' Zelo lepa hišica.', 'Je malo staro, a zelo dobro ohranjena. Izolacija je tk tk, a zaradi vzdušja to sploh ni važno. ', 'Ulica Janka Ulriha, 44', '2019-09-18 18:47:38', 'Prodaja', 'hisa', 'Pesje pri Velenju', '+38670744153', 100, 2, NULL);
 
 -- --------------------------------------------------------
 
@@ -105,9 +118,16 @@ CREATE TABLE `uporabniki` (
   `priimek` varchar(50) COLLATE utf8mb4_slovenian_ci NOT NULL,
   `email` varchar(255) COLLATE utf8mb4_slovenian_ci NOT NULL,
   `telefon` varchar(20) COLLATE utf8mb4_slovenian_ci NOT NULL,
-  `geslo` varchar(50) COLLATE utf8mb4_slovenian_ci NOT NULL,
+  `geslo` varchar(80) COLLATE utf8mb4_slovenian_ci NOT NULL,
   `tip` varchar(20) COLLATE utf8mb4_slovenian_ci NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_slovenian_ci;
+
+--
+-- Odloži podatke za tabelo `uporabniki`
+--
+
+INSERT INTO `uporabniki` (`id`, `ime`, `priimek`, `email`, `telefon`, `geslo`, `tip`) VALUES
+(2, 'Lenart', 'Golob', 'lenart.golob17@gmail.com', '070744153', '$2y$10$gFOamruzu0uI9QuH4EX2eO536TfWt4w36Wa76oBlP0VqlbeA1b0fW', 'user');
 
 --
 -- Indeksi zavrženih tabel
@@ -181,7 +201,7 @@ ALTER TABLE `kraji`
 -- AUTO_INCREMENT tabele `nepremicnine`
 --
 ALTER TABLE `nepremicnine`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT tabele `slike`
@@ -199,7 +219,7 @@ ALTER TABLE `sporocila`
 -- AUTO_INCREMENT tabele `uporabniki`
 --
 ALTER TABLE `uporabniki`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
