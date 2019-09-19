@@ -145,13 +145,17 @@ include_once "header.php";
                                 <div class="form-group row">
                                     <label for="email_address" class="col-md-4 col-form-label text-md-right">Slike:</label>
                                     <div class="col-md-6">
-                                        <input type="file" class="form-control" name="img" multiple>   
+                                        <input type="file" class="form-control" name="myfile" multiple>   
                                     </div>
                                 </div>
+                                    <?php
+                                    if(isset($_POST['sbmt'])){
+                                        $_SESSION['neki'] = "mrs";
+                                    }
 
-
+                                    ?>
                                     <div class="col-md-6 offset-md-4">
-                                        <button type="submit" class="btn btn-primary">
+                                        <button name="sbmt" type="submit" class="btn btn-primary">
                                         Objavi
                                         </button>
                                     </div>
