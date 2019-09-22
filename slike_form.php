@@ -1,5 +1,6 @@
 <?php
 include_once "database.php";
+include_once "session.php";
 ?>
 
 <!DOCTYPE html>
@@ -51,15 +52,17 @@ include_once "header.php";
                         <div class="card-body">
                         <?php
                             
-
+                            // Dobiš id od nepremicnine za katero vstavljaš sliko
                             $ime = $_SESSION['nepremicnina'];
-                            $query = "SELECT id FROM nepremicnine WHERE ime = ?";
+                            $opis = $_SESSION['opis'];
+                            $query = "SELECT id FROM nepremicnine WHERE ime = ? AND opis1 = ?";
                             $stmt = $pdo->prepare($query);
-                            $stmt->execute([$ime]);
+                            $stmt->execute([$ime, $opis]);
                             while ($row = $stmt->fetch()) {
                                 $nepremicnina_id = $row['id'];
                             }
-
+                            
+                            // Ob pritisku gumba se slika shrani v DB
                             if(isset($_POST['btn'])){
 
                                 $name = $_FILES['myfile']['name'];
@@ -76,7 +79,7 @@ include_once "header.php";
                                 <div class="form-group row">
                                     <label for="email_address" class="col-md-4 col-form-label text-md-right">Slike:</label>
                                     <div class="col-md-6">
-                                        <input type="file" class="form-control" name="myfile">   
+                                        <input type="file" class="form-control" name="myfile" accept="image/jpeg, image/png, image/jpg">   
                                     </div>
                                 </div>
                                     <div class="col-md-6 offset-md-4">

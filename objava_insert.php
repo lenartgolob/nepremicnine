@@ -20,10 +20,11 @@ $opis2 = $_POST['opis2'];
 $uporabnik_id = $_SESSION['user_id'];
 
 $_SESSION['nepremicnina'] = $ime;
+$_SESSION['opis'] = $opis1;
 
-$query = "INSERT INTO nepremicnine (ime, opis1, opis2, naslov, posredovanje, vrsta, lokacija, telefon, parcela, uporabnik_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+$query = "INSERT INTO nepremicnine (ime, opis1, opis2, naslov, posredovanje, vrsta, lokacija, telefon, parcela, uporabnik_id, kraj_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 $stmt = $pdo->prepare($query);
-$stmt->execute([$ime, $opis1, $opis2, $naslov, $posredovanje, $vrsta, $lokacija, $telefon, $parcela, $uporabnik_id]);
+$stmt->execute([$ime, $opis1, $opis2, $naslov, $posredovanje, $vrsta, $lokacija, $telefon, $parcela, $uporabnik_id, $kraj]);
 
 /*
 $name = $_FILES['myfile']['name'];

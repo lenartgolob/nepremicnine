@@ -1,3 +1,6 @@
+<?php
+include_once "database.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -90,11 +93,17 @@ include_once "header.php";
                                 <div class="form-group row">
                                     <label for="user_name" class="col-md-4 col-form-label text-md-right">Kraj:</label>
                                     <div class="col-md-6">
-                                        <select class="form-control selectpicker" id="select-person" data-live-search="true" name="kraj" class="form-control">
-                                            <option value="Velenje">Velenje</option>
-                                            <option value="Celje">Celje</option>
-                                            <option value="Ljubljana">Ljubljana</option>
-                                            <option value="Maribor">Maribor</option>
+                                    <select class="form-control selectpicker" id="select-person" data-live-search="true" name="kraj" class="form-control">
+                                        <?php
+                                               $query = "SELECT * FROM kraji";
+                                               $stmt = $pdo->prepare($query);
+                                               $stmt->execute();
+                                               //izvedlo se bo tolikokrat, koliko je vrstic rezultata
+                                               //trenutno vrstico shrani v spremenljivko $row
+                                               while ($row = $stmt->fetch()) {
+                                                   echo '<option value="' . $row['id'] . '">' . $row['ime'] . '</option>';
+                                               }
+                                        ?>
                                         </select>
                                     </div>
                                 </div>
@@ -141,19 +150,6 @@ include_once "header.php";
                                         <textarea class="form-control" name="opis2"> </textarea>
                                     </div>
                                 </div>
-
-                                <div class="form-group row">
-                                    <label for="email_address" class="col-md-4 col-form-label text-md-right">Slike:</label>
-                                    <div class="col-md-6">
-                                        <input type="file" class="form-control" name="myfile" multiple>   
-                                    </div>
-                                </div>
-                                    <?php
-                                    if(isset($_POST['sbmt'])){
-                                        $_SESSION['neki'] = "mrs";
-                                    }
-
-                                    ?>
                                     <div class="col-md-6 offset-md-4">
                                         <button name="sbmt" type="submit" class="btn btn-primary">
                                         Objavi
