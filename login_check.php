@@ -22,8 +22,8 @@ $pass = $_POST['pass'];
             header("Location: index.php");
             die();
         }
-        header("Location: login.php?wrongpass");
+        header("Location: login.php?msg=wrongpass");
     }
 
-header("Location: login.php?wrongpass");
+header("Location: login.php?msg=wrongpass");
 ?>

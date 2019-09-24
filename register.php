@@ -2,6 +2,13 @@
 <html lang="en">
 
 <head>
+<style>
+  #notpass {
+    color: red;
+    text-align: center;
+    font-size: 90%;
+  }
+</style>
   <meta charset="utf-8">
   <link rel="stylesheet" type="text/css" href="css/registerStyle.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
@@ -53,7 +60,23 @@
         </div>
 		<div class="form-group">
             <input type="password" class="form-control" name="pass2" placeholder="Ponovi geslo" required="required">
-        </div>        
+        </div> 
+        <?php
+           if(isset($_GET['msg']) && $_GET['msg']=="notpass") {
+        ?>
+        <div class="form-group" id="notpass">
+            <p>Gesli se ne ujemata</p>
+        </div>  
+        <?php
+           }
+           if(isset($_GET['msg']) && $_GET['msg']=="mailtaken") {
+        ?>
+        <div class="form-group" id="notpass">
+            <p>Email je že uporabljen</p>
+        </div>   
+        <?php
+           }
+        ?>
         <div class="form-group">
 			<label class="checkbox-inline"><input type="checkbox" required="required"> I accept the <a href="#">Terms of Use</a> &amp; <a href="#">Privacy Policy</a></label>
 		</div>

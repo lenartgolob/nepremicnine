@@ -8,6 +8,12 @@
     background-color: #212529;
     padding: 20px;
   }
+  #wrongpass {
+    text-align: center;
+    color: red;
+    font-size: 80%;
+  }
+  }
   </style>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -56,7 +62,15 @@ include_once "header.php";
                 <input type="password" id="inputPassword" class="form-control" name="pass" required>
                 <label for="inputPassword">Password</label>
               </div>
-
+              <?php
+                if(isset($_GET['msg']) && $_GET['msg']=="wrongpass") {
+              ?>
+              <div class="custom-control custom-checkbox mb-3" id="wrongpass">
+                <p>Napačen email ali geslo!</p>
+              </div>
+              <?php
+                }
+              ?>
               <div class="custom-control custom-checkbox mb-3">
                 <input type="checkbox" class="custom-control-input" id="customCheck1">
                 <a href="register.php">Don't have an account? Register here!</a>
@@ -80,3 +94,8 @@ include_once "footer.php";
 </body>
 
 </html>
+<script>
+function wrongPass() {
+  alert("Napačno geslo ali uporabniško ime!");
+}
+</script>

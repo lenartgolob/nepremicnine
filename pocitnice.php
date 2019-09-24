@@ -1,3 +1,6 @@
+<?php
+include_once "database.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,6 +10,21 @@
   #navmain {
     background-color: #212529;
     padding: 20px;
+  }
+
+  table {
+    table-layout: fixed;
+    margin: 0 auto;
+  }
+
+  #miza {
+    width: 80%;
+    text-align: center;
+  }
+
+  img {
+    width: 100%;
+  }
   }
   </style>
   <meta charset="utf-8">
@@ -38,6 +56,45 @@ include_once "header.php";
 ?>
 
 <br><br><br><br><br><br><br><br><br>
+
+<table class="table table-hover" id="miza">
+  <thead>
+    <tr>
+        <th>Slika</th>
+        <th>Ime</th>
+        <th>Kraj</th>
+        <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <?php
+    
+    $query = "SELECT n.*, s.slika, k.ime AS ime_kraja FROM nepremicnine n INNER JOIN slike s ON n.id = s.nepremicnina_id INNER JOIN kraji k ON k.id = n.kraj_id WHERE n.vrsta = 'pocitniski'";
+    $stmt = $pdo->prepare($query);
+    $stmt->execute();
+    //izvedlo se bo tolikokrat, koliko je vrstic rezultata
+    //trenutno vrstico shrani v spremenljivko $row
+    while ($row = $stmt->fetch()) {
+        echo '<tr id="vrstica">';
+        echo '<td><a href="farm.php?id='.$row['id'].'"><img src="data:;base64,' . base64_encode($row['slika']) .'"></a></td>';
+        echo '<td><a href="farm.php?id='.$row['id'].'">'.$row['ime'].'</a></td>';
+        echo '<td>'.$row['ime_kraja'].'</td>';
+        echo '<td>'.$row['posredovanje'].'</td>';
+        /*
+        if ($row['user_id'] == $_SESSION['user_id']) {
+            echo '<td>';
+            echo '<a href="farm_delete.php?id='.$row['id'].'" onclick="return confirm(\'Prepričani?\');">B</a>';
+            echo '<a href="farm_edit.php?id='.$row['id'].'">U</a>';
+            echo '</td>';
+        }
+        */
+        
+        echo '</tr>';
+    }
+    
+    ?>
+  </tbody>
+</table>
 
 <?php
 include_once "footer.php";

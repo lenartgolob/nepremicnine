@@ -41,10 +41,10 @@ if ($stmt->rowCount() < 1) {
         
     }
     else {
-        header("Location: register.php?notpass");
+        header("Location: register.php?msg=notpass");
     }
 }
 else {
-    header("Location: register.php?mailtaken");
+    header("Location: register.php?msg=mailtaken");
 }
 ?>
