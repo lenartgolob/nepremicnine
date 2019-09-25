@@ -76,8 +76,8 @@ include_once "header.php";
     //trenutno vrstico shrani v spremenljivko $row
     while ($row = $stmt->fetch()) {
         echo '<tr id="vrstica">';
-        echo '<td><a href="farm.php?id='.$row['id'].'"><img src="data:;base64,' . base64_encode($row['slika']) .'"></a></td>';
-        echo '<td><a href="farm.php?id='.$row['id'].'">'.$row['ime'].'</a></td>';
+        echo '<td><a href="nepremicnina.php?id='.$row['id'].'"><img src="data:;base64,' . base64_encode($row['slika']) .'"></a></td>';
+        echo '<td><a href="nepremicnina.php?id='.$row['id'].'">'.$row['ime'].'</a></td>';
         echo '<td>'.$row['ime_kraja'].'</td>';
         echo '<td>'.$row['posredovanje'].'</td>';
         /*

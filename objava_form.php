@@ -68,7 +68,7 @@ include_once "header.php";
                                 </div>
 
                                 <div class="form-group row">
-                                    <label for="phone_number" class="col-md-4 col-form-label text-md-right">Vrsta nepremicnine:</label>
+                                    <label for="phone_number" class="col-md-4 col-form-label text-md-right">Vrsta nepremičnine:</label>
                                     <div class="col-md-6">
                                         <table width="100%">
                                             <tr>
@@ -79,6 +79,24 @@ include_once "header.php";
                                                 <td><input type="radio" name="vrsta" value="vikend"> Vikend </td>
                                                 <td> <input type="radio" name="vrsta" value="pocitniski"> Počitniški objekt </td>
                                                 <td> <input type="radio" name="vrsta" value="poslovni"> Poslovni prostor </td>
+                                        </table>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="phone_number" class="col-md-4 col-form-label text-md-right">Tip nepremičnine:</label>
+                                    <div class="col-md-6">
+                                        <table width="100%">
+                                            <tr>
+                                                <td><input type="radio" name="tip" value="soba" checked="checked"> Soba </td>
+                                                <td><input type="radio" name="tip" value="garsonjera"> Garsonjera </td>
+                                                <td><input type="radio" name="tip" value="2-sobna nepremičnina" > 2-sobno </td>
+                                                <td><input type="radio" name="tip" value="3-sobna nepremičnina" > 3-sobno </td>
+                                            </tr>
+                                                <td><input type="radio" name="tip" value="4-sobna nepremičnina"> 4-sobno </td>
+                                                <td> <input type="radio" name="tip" value="5 in večsobna nepremičnina"> 5 in večsobno </td>
+                                                <td> <input type="radio" name="tip" value="nepremičnina tipa apartma"> Apartma </td>
+                                                <td> <input type="radio" name="tip" value="nepremičnina"> Drugo </td>
                                         </table>
                                     </div>
                                 </div>
@@ -127,6 +145,13 @@ include_once "header.php";
                                     <label for="phone_number" class="col-md-4 col-form-label text-md-right">Telefonska stevilka:</label>
                                     <div class="col-md-6">
                                         <input type="text" id="telefon" name="telefon" class="form-control">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="present_address" class="col-md-4 col-form-label text-md-right">Velikost nepremicnine (m<sup>2</sup>):</label>
+                                    <div class="col-md-6">
+                                        <input type="text" id="present_address" name="velikost" class="form-control">
                                     </div>
                                 </div>
 
