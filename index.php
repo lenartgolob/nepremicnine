@@ -24,6 +24,12 @@ else {
       .imgdb {
         width: 350px;
       }
+
+      #search {
+        display: none;
+
+
+  }
     }
 
     .thumbnail {
@@ -44,6 +50,32 @@ else {
               transform: translate(-50%,-50%);
 }
 
+    .input-group.md-form.form-sm.form-2 input.amber-border {
+    border: 1px solid #ffca28;
+    }
+
+    .navbar .navbar-search .dropdown-menu { min-width: 25px; }
+.dropdown-menu .label-icon { margin-left: 5px; }
+.btn-outline {
+    background-color: transparent;
+    color: inherit;
+    transition: all .5s;
+}
+
+  #search {
+    position:absolute;
+    top: 600px;
+    left: 800px;
+    width: 300px;
+
+  }
+
+  #lupa {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+ 
+
   </style>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -54,6 +86,9 @@ else {
 
   <!-- Bootstrap core CSS -->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
 
   <!-- Custom fonts for this template -->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -73,12 +108,13 @@ else {
     include_once "header.php";
   ?>
 
+
   <!-- Header -->
   <header class="masthead">
     <div class="container">
       <div class="intro-text">
         <div class="intro-lead-in">Dobrodošli!</div>
-        <div class="intro-heading text-uppercase">NEPREMIČNINE.NET</div>
+        <div id="napis" class="intro-heading text-uppercase">NEPREMIČNINE.NET</div>
         <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="<?php echo $linko ?>">
         <?php
           echo $objava;
@@ -88,6 +124,27 @@ else {
     </div>
   </header>
 
+<script type="text/javascript">
+  function submitform()
+  {
+      document.forms["myform"].submit();
+  }
+</script>
+  <form id="myform" method="POST" action="searchpage.php">
+    <div id="search" class="input-group md-form form-sm form-2 pl-0">
+    <input class="form-control my-0 py-1 amber-border" name="search" type="text" placeholder="Search" aria-label="Search">
+    <a href="javascript: submitform()"><div  class="input-group-append">
+    <span id="lupa" class="input-group-text amber lighten-3" id="basic-text1"><i class="fas fa-search text-grey"
+          aria-hidden="true"></i></span>
+    </div></a>
+  </div> 
+  </form>
+
+<script>
+    function myFunction() {
+      document.getElementById("myForm").submit();
+    }
+</script>
 
   <!-- Portfolio Grid -->
   <section class="bg-light page-section" id="portfolio">
@@ -213,6 +270,9 @@ for ($st = 1; $row = $stmt->fetch(); $st++) {
   <!-- Bootstrap core JavaScript -->
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
   <!-- Plugin JavaScript -->
   <script src="vendor/jquery-easing/jquery.easing.min.js"></script>

@@ -53,14 +53,13 @@ include_once "header.php";
                         <?php
                             
                             // Dobiš id od nepremicnine za katero vstavljaš sliko
-                            $ime = $_SESSION['nepremicnina'];
-                            $opis = $_SESSION['opis'];
-                            $query = "SELECT id FROM nepremicnine WHERE ime = ? AND opis1 = ?";
+
+                            $query = "SELECT id FROM nepremicnine ORDER BY id DESC LIMIT 1";
                             $stmt = $pdo->prepare($query);
-                            $stmt->execute([$ime, $opis]);
-                            while ($row = $stmt->fetch()) {
-                                $nepremicnina_id = $row['id'];
-                            }
+                            $stmt->execute();
+                            $row = $stmt->fetch();
+                            $nepremicnina_id = $row['id'];
+                            
                             
                             // Ob pritisku gumba se slika shrani v DB
                             if(isset($_POST['btn'])){
@@ -73,13 +72,15 @@ include_once "header.php";
                                 $stmt = $pdo->prepare($query);
                                 $stmt->execute([$name, $type, $data, $nepremicnina_id]);
 
+                                header("Location: index.php");
+
                             }
                         ?>
                             <form name="my-form" method="POST" enctype="multipart/form-data">
                                 <div class="form-group row">
                                     <label for="email_address" class="col-md-4 col-form-label text-md-right">Slike:</label>
                                     <div class="col-md-6">
-                                        <input type="file" class="form-control" name="myfile" accept="image/jpeg, image/png, image/jpg">   
+                                        <input type="file" class="form-control" name="myfile" accept="image/jpeg, image/png, image/jpg" required>   
                                     </div>
                                 </div>
                                     <div class="col-md-6 offset-md-4">

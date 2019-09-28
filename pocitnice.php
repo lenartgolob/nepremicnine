@@ -69,7 +69,7 @@ include_once "header.php";
   <tbody>
     <?php
     
-    $query = "SELECT n.*, s.slika, k.ime AS ime_kraja FROM nepremicnine n INNER JOIN slike s ON n.id = s.nepremicnina_id INNER JOIN kraji k ON k.id = n.kraj_id WHERE n.vrsta = 'pocitniski'";
+    $query = "SELECT n.*, s.slika, k.ime AS ime_kraja FROM nepremicnine n INNER JOIN slike s ON n.id = s.nepremicnina_id INNER JOIN kraji k ON k.id = n.kraj_id WHERE n.vrsta = 'pocitniski' ORDER BY id DESC";
     $stmt = $pdo->prepare($query);
     $stmt->execute();
     //izvedlo se bo tolikokrat, koliko je vrstic rezultata

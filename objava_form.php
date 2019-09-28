@@ -46,13 +46,13 @@ include_once "header.php";
         <div class="row justify-content-center">
             <div class="col-md-8">
                     <div class="card">
-                        <div class="card-header"><h5>Objavi oglas</h5></div>
+                        <div class="card-header"><h5>Objavi oglas</h5><p></p></div>
                         <div class="card-body">
                             <form name="my-form" action="objava_insert.php" method="POST">
                                 <div class="form-group row">
                                     <label for="user_name" class="col-md-4 col-form-label text-md-right">Vrsta posredovanja:</label>
                                     <div class="col-md-6">
-                                        <select name="posredovanje" class="form-control">
+                                        <select name="posredovanje" class="form-control" >
                                             <option value="Prodaja">Prodaja</option>
                                             <option value="Nakup">Nakup</option>
                                             <option value="Oddaja">Oddaja</option>
@@ -63,7 +63,7 @@ include_once "header.php";
                                 <div class="form-group row">
                                     <label for="full_name" class="col-md-4 col-form-label text-md-right">Naslov oglasa:</label>
                                     <div class="col-md-6">
-                                        <input type="text" id="naslov" class="form-control" name="ime">
+                                        <input type="text" id="naslov" class="form-control" name="ime" required>
                                     </div>
                                 </div>
 
@@ -104,7 +104,7 @@ include_once "header.php";
                                 <div class="form-group row">
                                     <label for="email_address" class="col-md-4 col-form-label text-md-right">Naslov nepremicnine:</label>
                                     <div class="col-md-6">
-                                        <input type="text" id="naslov" class="form-control" name="naslov">
+                                        <input type="text" id="naslov" class="form-control" name="naslov" required>
                                     </div>
                                 </div>
 
@@ -137,42 +137,42 @@ include_once "header.php";
                                 <div class="form-group row">
                                     <label for="phone_number" class="col-md-4 col-form-label text-md-right">Lokacija (dodaten opis lokacije):</label>
                                     <div class="col-md-6">
-                                        <input type="text" id="lokacija" name="lokacija" class="form-control">
+                                        <input type="text" id="lokacija" name="lokacija" class="form-control" required>
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
-                                    <label for="phone_number" class="col-md-4 col-form-label text-md-right">Telefonska stevilka:</label>
+                                    <label for="phone_number" class="col-md-4 col-form-label text-md-right">Telefonska številka:</label>
                                     <div class="col-md-6">
-                                        <input type="text" id="telefon" name="telefon" class="form-control">
+                                        <input type="text" id="telefon" name="telefon" class="form-control" required>
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
                                     <label for="present_address" class="col-md-4 col-form-label text-md-right">Velikost nepremicnine (m<sup>2</sup>):</label>
                                     <div class="col-md-6">
-                                        <input type="text" id="present_address" name="velikost" class="form-control">
+                                        <input type="text" id="present_address" name="velikost" class="form-control" required>
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
                                     <label for="present_address" class="col-md-4 col-form-label text-md-right">Parcela (m<sup>2</sup>):</label>
                                     <div class="col-md-6">
-                                        <input type="text" id="present_address" name="parcela" class="form-control">
+                                        <input type="text" id="present_address" name="parcela" class="form-control" required>
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
                                     <label for="permanent_address" class="col-md-4 col-form-label text-md-right">Opis (krajši paragraf):</label>
                                     <div class="col-md-6">
-                                        <textarea class="form-control" name="opis1"> </textarea>
+                                        <textarea class="form-control" name="opis1" required> </textarea>
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
                                     <label for="permanent_address" class="col-md-4 col-form-label text-md-right">Opis (daljši paragraf):</label>
                                     <div class="col-md-6">
-                                        <textarea class="form-control" name="opis2"> </textarea>
+                                        <textarea class="form-control" name="opis2" required> </textarea>
                                     </div>
                                 </div>
                                     <div class="col-md-6 offset-md-4">
