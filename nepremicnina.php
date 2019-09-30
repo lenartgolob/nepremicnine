@@ -6,24 +6,14 @@ include_once "database.php";
 
 <head>
 
-  <style>
-  #navmain {
-    background-color: #212529;
-    padding: 20px;
-  }
-
-  img {
-      width: 60%;
-
-  }
-
-  </style>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
 
   <title>Nepremicnine.net</title>
+
+  <link rel="stylesheet" type="text/css" href="css/style.css">
 
   <!-- Bootstrap core CSS -->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -81,7 +71,7 @@ echo '<h4 class="font-weight-normal"> ' . $row['ime'] . '</h4>';
 echo '<h6 class="text-muted font-weight-light"> ' . $row['ime_kraja'] . ', ' . $row['lokacija'] . '</h6><br>';
 echo '<p>' . $text . '</p><br>';
 echo '<div class="text-center">';
-echo '<img src="data:;base64,' . base64_encode($row['slika']) .'">';
+echo '<img class="slika60" src="data:;base64,' . base64_encode($row['slika']) .'">';
 echo '</div><br><br>';
 echo '<p>' . $row['opis1'] .'</p>';
 echo '<p>' . $row['opis2'] .'</p><br>';

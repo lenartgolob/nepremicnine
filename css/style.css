@@ -1,3 +1,5 @@
+ /* Index */
+ 
  .imgdb {
      width: 700px;
 }
@@ -55,4 +57,42 @@ width: 300px;
 #lupa {
 padding-top: 10px;
 padding-bottom: 10px;
+}
+
+/* novogradnja, itd.. */
+
+#navmain {
+    background-color: #212529;
+    padding: 20px;
+  }
+
+  table {
+    table-layout: fixed;
+    margin: 0 auto;
+  }
+
+  #miza {
+    width: 80%;
+    text-align: center;
+  }
+
+  .slika {
+    width: 100%;
+  }
+
+  /* MyObjave */
+
+  .edit {
+    width: 45px; 
+   }
+
+   .remove {
+       width: 42px;
+   }
+
+   /* Nepremicnina */
+
+   .slika60 {
+    width: 60%;
+
 }

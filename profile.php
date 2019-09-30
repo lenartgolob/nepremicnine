@@ -7,38 +7,14 @@ include_once "session.php";
 
 <head>
 
-  <style>
-  #navmain {
-    background-color: #212529;
-    padding: 20px;
-  }
-
-  table {
-    table-layout: fixed;
-    margin: 0 auto;
-  }
-
-  #miza {
-    width: 80%;
-    text-align: center;
-  }
-
-  img {
-    width: 100%;
-  }
-  }
-
-  .profil_pass {
-      color: red;
-  }
-
-  </style>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
 
   <title>Nepremicnine.net</title>
+
+  <link rel="stylesheet" type="text/css" href="css/style.css">
 
   <!-- Bootstrap core CSS -->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">

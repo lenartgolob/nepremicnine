@@ -6,33 +6,14 @@ include_once "database.php";
 
 <head>
 
-  <style>
-  #navmain {
-    background-color: #212529;
-    padding: 20px;
-  }
-
-  table {
-    table-layout: fixed;
-    margin: 0 auto;
-  }
-
-  #miza {
-    width: 80%;
-    text-align: center;
-  }
-
-  img {
-    width: 100%;
-  }
-  }
-  </style>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
 
   <title>Nepremicnine.net</title>
+
+  <link rel="stylesheet" type="text/css" href="css/style.css">
 
   <!-- Bootstrap core CSS -->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -77,7 +58,7 @@ include_once "header.php";
     //trenutno vrstico shrani v spremenljivko $row
     while ($row = $stmt->fetch()) {
         echo '<tr id="vrstica">';
-        echo '<td><a href="nepremicnina.php?id='.$row['id'].'"><img src="data:;base64,' . base64_encode($row['slika']) .'"></a></td>';
+        echo '<td><a href="nepremicnina.php?id='.$row['id'].'"><img class="slika" src="data:;base64,' . base64_encode($row['slika']) .'"></a></td>';
         echo '<td><a href="nepremicnina.php?id='.$row['id'].'">'.$row['ime'].'</a></td>';
         echo '<td>'.$row['ime_kraja'].'</td>';
         echo '<td>'.$row['posredovanje'].'</td>';

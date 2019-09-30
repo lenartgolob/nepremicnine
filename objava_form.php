@@ -6,18 +6,14 @@ include_once "database.php";
 
 <head>
 
-  <style>
-  #navmain {
-    background-color: #212529;
-    padding: 20px;
-  }
-  </style>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
 
   <title>Nepremicnine.net</title>
+
+  <link rel="stylesheet" type="text/css" href="css/style.css">
 
   <!-- Bootstrap core CSS -->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -151,21 +147,21 @@ include_once "header.php";
                                 <div class="form-group row">
                                     <label for="present_address" class="col-md-4 col-form-label text-md-right">Velikost nepremicnine (m<sup>2</sup>):</label>
                                     <div class="col-md-6">
-                                        <input type="text" id="present_address" name="velikost" class="form-control" required>
+                                        <input type="number" id="present_address" name="velikost" class="form-control" required>
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
                                     <label for="present_address" class="col-md-4 col-form-label text-md-right">Parcela (m<sup>2</sup>):</label>
                                     <div class="col-md-6">
-                                        <input type="text" id="present_address" name="parcela" class="form-control" required>
+                                        <input type="number" id="present_address" name="parcela" class="form-control" required>
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
                                     <label for="present_address" class="col-md-4 col-form-label text-md-right">Cena:</label>
                                     <div class="col-md-6">
-                                        <input type="text" id="present_address" name="cena" class="form-control" required>
+                                        <input type="number" id="present_address" name="cena" class="form-control" required>
                                     </div>
                                 </div>
 
