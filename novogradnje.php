@@ -22,7 +22,7 @@ include_once "database.php";
     text-align: center;
   }
 
-  img {
+  .slika {
     width: 100%;
   }
 
@@ -76,7 +76,7 @@ include_once "header.php";
     //trenutno vrstico shrani v spremenljivko $row
     while ($row = $stmt->fetch()) {
         echo '<tr id="vrstica">';
-        echo '<td><a href="nepremicnina.php?id='.$row['id'].'"><img src="data:;base64,' . base64_encode($row['slika']) .'"></a></td>';
+        echo '<td><a href="nepremicnina.php?id='.$row['id'].'"><img class="slika" src="data:;base64,' . base64_encode($row['slika']) .'"></a></td>';
         echo '<td><a href="nepremicnina.php?id='.$row['id'].'">'.$row['ime'].'</a></td>';
         echo '<td>'.$row['ime_kraja'].'</td>';
         echo '<td>'.$row['posredovanje'].'</td>';

@@ -7,11 +7,10 @@ $id = $_SESSION["user_id"];
 $ime = $_POST['ime'];
 $priimek = $_POST['priimek'];
 $email = $_POST['email'];
-$telefon = $_POST['telefon'];
 
-$query = "UPDATE uporabniki SET ime = ?, priimek = ?, email = ?, telefon = ? WHERE id = ?";
+$query = "UPDATE uporabniki SET ime = ?, priimek = ?, email = ? WHERE id = ?";
 $stmt = $pdo->prepare($query);
-$stmt->execute([$ime, $priimek, $email, $telefon, $id]);
+$stmt->execute([$ime, $priimek, $email, $id]);
 
 header("Location: Index.php")
 

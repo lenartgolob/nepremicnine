@@ -47,7 +47,7 @@ include_once "session.php";
                 <a class="dropdown-item" href="profile.php">M<span class="text-lowercase">oj profil</span></a>
                 <a class="dropdown-item" href="myobjave.php">M<span class="text-lowercase">oje objave</span></a>
                 <?php
-                  if($_SESSION['tip'] == "admin"){
+                  if(isset($_SESSION['tip']) && $_SESSION['tip'] == "admin"){
                     echo '<a class="dropdown-item" href="vse_objave_admin.php">V<span class="text-lowercase">se objave</span></a>';
                   }
                 ?>

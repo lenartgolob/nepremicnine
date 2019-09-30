@@ -163,6 +163,13 @@ include_once "header.php";
                                 </div>
 
                                 <div class="form-group row">
+                                    <label for="present_address" class="col-md-4 col-form-label text-md-right">Cena:</label>
+                                    <div class="col-md-6">
+                                        <input type="text" id="present_address" name="cena" class="form-control" required>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
                                     <label for="permanent_address" class="col-md-4 col-form-label text-md-right">Opis (krajši paragraf):</label>
                                     <div class="col-md-6">
                                         <textarea class="form-control" name="opis1" required> </textarea>

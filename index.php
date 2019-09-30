@@ -2,7 +2,7 @@
 include_once "session.php";
 include_once "database.php";
 
-if(isset($_SESSION['user_id'])){
+if(isset($_SESSION['user_id']) && isset($_SESSION['email'])){
   $objava = "Objavi oglas";
   $linko = "objava_form.php";
 }
@@ -15,74 +15,14 @@ else {
 <html lang="en">
 
 <head>
-  <style>
-    .imgdb {
-      width: 700px;
-    }
-
-    @media only screen and (max-width: 600px) {
-      .imgdb {
-        width: 350px;
-      }
-
-      #search {
-        display: none;
-
-
-  }
-    }
-
-    .thumbnail {
-      position: relative;
-      width: 350px;
-      height: 250px;
-      overflow: hidden;
-    }
-
-    .thumbnail img {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      height: 100%;
-      width: auto;
-      -webkit-transform: translate(-50%,-50%);
-          -ms-transform: translate(-50%,-50%);
-              transform: translate(-50%,-50%);
-}
-
-    .input-group.md-form.form-sm.form-2 input.amber-border {
-    border: 1px solid #ffca28;
-    }
-
-    .navbar .navbar-search .dropdown-menu { min-width: 25px; }
-.dropdown-menu .label-icon { margin-left: 5px; }
-.btn-outline {
-    background-color: transparent;
-    color: inherit;
-    transition: all .5s;
-}
-
-  #search {
-    position:absolute;
-    top: 600px;
-    left: 800px;
-    width: 300px;
-
-  }
-
-  #lupa {
-    padding-top: 10px;
-    padding-bottom: 10px;
-  }
- 
-
-  </style>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
 
   <title>Nepremicnine.net</title>
+
+  <link rel="stylesheet" type="text/css" href="css/style.css">
 
   <!-- Bootstrap core CSS -->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">

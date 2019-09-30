@@ -1,3 +1,8 @@
+<?php
+  require_once "config.php";
+
+  $loginURL = $gClient -> createAuthUrl();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -77,7 +82,7 @@ include_once "header.php";
               </div>
               <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Sign in</button>
               <hr class="my-4">
-              <a href="g-callback.php"><button class="btn btn-lg btn-google btn-block text-uppercase"><i class="fab fa-google mr-2"></i> Sign in with Google</button></a>
+              <button onclick="window.location = '<?php echo $loginURL ?>'" class="btn btn-lg btn-google btn-block text-uppercase"><i class="fab fa-google mr-2"></i> Sign in with Google</button>
               <button class="btn btn-lg btn-facebook btn-block text-uppercase" type="submit"><i class="fab fa-facebook-f mr-2"></i> Sign in with Facebook</button>
             </form>
           </div>

@@ -52,9 +52,6 @@
         <div class="form-group">
         	<input type="email" class="form-control" name="email" placeholder="Email" required="required">
         </div>
-        <div class="form-group">
-            <input type="tel" class="form-control" name="phone" placeholder="Telefon" pattern="[0-9]{9}" required="required">
-        </div>
 		<div class="form-group">
             <input type="password" class="form-control" name="pass1" placeholder="Geslo" required="required">
         </div>

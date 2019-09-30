@@ -96,11 +96,7 @@ include_once "header.php";
                                                 required="required"
                                             />
                                         </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Telefon:</td>
-                                        <td><input type="text" name="telefon" value="<?php echo $_SESSION["telefon"]; ?>" required="required"></td>
-                                    </tr>                                             
+                                    </tr>                                           
                                     
                                 </tbody>
                             </table>
