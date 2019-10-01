@@ -1,0 +1,4 @@
+$host = 'localhost';
+$db   = 'lenartgo_nepremicnine';
+$user = 'lenartgo_nepremicnine';
+$pass = 'nepremicnine123';

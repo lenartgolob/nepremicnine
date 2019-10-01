@@ -47,7 +47,10 @@ include_once "header.php";
                         <div class="card-header"><h5>Izberi slike</h5></div>
                         <div class="card-body">
                         <?php
-                            
+                            if(isset($_GET['id'])){
+                                $nepremicnina_id = $_GET['id'];
+                            }
+                            else {
                             // Dobiš id od nepremicnine za katero vstavljaš sliko
 
                             $query = "SELECT id FROM nepremicnine ORDER BY id DESC LIMIT 1";
@@ -56,7 +59,7 @@ include_once "header.php";
                             $row = $stmt->fetch();
                             $nepremicnina_id = $row['id'];
                             
-                            
+                            }
                             // Ob pritisku gumba se slika shrani v DB
                             if(isset($_POST['btn'])){
 
@@ -68,7 +71,7 @@ include_once "header.php";
                                 $stmt = $pdo->prepare($query);
                                 $stmt->execute([$name, $type, $data, $nepremicnina_id]);
 
-                                header("Location: index.php");
+                                //header("Location: index.php");
 
                             }
                         ?>

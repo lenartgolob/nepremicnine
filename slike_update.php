@@ -52,10 +52,10 @@ include_once "header.php";
                         <div class="card-body">
                         <?php
                             
-                            
+                            $nepremicnina_id = $_GET['id'];
                             // Ob pritisku gumba se slika Updejta
                             if(isset($_POST['btn'])){
-                                $nepremicnina_id = $_GET['id'];
+
                                 $name = $_FILES['myfile']['name'];
                                 $type = $_FILES['myfile']['type'];
                                 $data = file_get_contents($_FILES['myfile']['tmp_name']);
@@ -67,6 +67,8 @@ include_once "header.php";
 
 
                             }
+
+
                         ?>
                             <form name="my-form" method="POST" enctype="multipart/form-data">
                                 <div class="form-group row">
@@ -79,6 +81,8 @@ include_once "header.php";
                                         <button name="btn" class="btn btn-primary">
                                         Objavi
                                         </button>
+                                        <a href="slike_form.php?id=<?php echo $nepremicnina_id; ?>">Dodaj slike</a>
+
                                     </div>
                                 </div>
                             </form>

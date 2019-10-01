@@ -62,6 +62,7 @@ switch ($row['posredovanje']) {
         break;
 }
 ?>
+
 <div class="container">
 
 <?php
@@ -71,7 +72,39 @@ echo '<h4 class="font-weight-normal"> ' . $row['ime'] . '</h4>';
 echo '<h6 class="text-muted font-weight-light"> ' . $row['ime_kraja'] . ', ' . $row['lokacija'] . '</h6><br>';
 echo '<p>' . $text . '</p><br>';
 echo '<div class="text-center">';
-echo '<img class="slika60" src="data:;base64,' . base64_encode($row['slika']) .'">';
+// IZ DB dobimo vse slike
+$query = "SELECT s.slika FROM slike s WHERE s.nepremicnina_id = ? ORDER BY id ASC";
+$stmt = $pdo->prepare($query);
+$stmt->execute([$n_id]);
+echo '<div class="galerija text-center">';
+echo '<div id="carouselExampleControls" class="carousel slide slika60 slika69" data-ride="carousel">';
+echo '<div class="carousel-inner">';
+$active = "active";
+while ($row = $stmt->fetch()) {
+    echo '<div class="carousel-item ' . $active . '">';
+    $active = "";
+    echo '<img class="slika60 d-block w-100" alt="slika" src="data:;base64,' . base64_encode($row['slika']) .'">';
+    echo '</div>';
+}
+?>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+</div>
+<?php
+$query = "SELECT n.*, s.slika, k.posta, k.ime AS ime_kraja, u.ime AS uporabnik_ime, u.priimek, u.email FROM nepremicnine n INNER JOIN uporabniki u ON u.id = n.uporabnik_id INNER JOIN kraji k ON k.id = n.kraj_id INNER JOIN slike s ON n.id = s.nepremicnina_id WHERE n.id = ?";
+$stmt = $pdo->prepare($query);
+$stmt->execute([$n_id]);
+$row = $stmt->fetch();
+
+//echo '<img class="slika60" src="data:;base64,' . base64_encode($row['slika']) .'">';
 echo '</div><br><br>';
 echo '<p>' . $row['opis1'] .'</p>';
 echo '<p>' . $row['opis2'] .'</p><br>';
@@ -82,7 +115,8 @@ echo '<li>' . $row['telefon'] . '</li>';
 echo '<li>' . $row['email'] . '</li><br><br>';
 
 ?>
-</div>
+
+
 <?php
 include_once "footer.php";
 ?>

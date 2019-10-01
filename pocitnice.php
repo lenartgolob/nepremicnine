@@ -48,14 +48,20 @@ include_once "header.php";
   <tbody>
     <?php
     
-    $query = "SELECT n.*, s.slika, k.ime AS ime_kraja FROM nepremicnine n INNER JOIN slike s ON n.id = s.nepremicnina_id INNER JOIN kraji k ON k.id = n.kraj_id WHERE n.vrsta = 'pocitniski' ORDER BY id DESC";
+    $query = "SELECT n.*, k.ime AS ime_kraja FROM nepremicnine n INNER JOIN kraji k ON k.id = n.kraj_id WHERE n.vrsta = 'pocitniski' ORDER BY id DESC";
     $stmt = $pdo->prepare($query);
     $stmt->execute();
     //izvedlo se bo tolikokrat, koliko je vrstic rezultata
     //trenutno vrstico shrani v spremenljivko $row
     while ($row = $stmt->fetch()) {
+        $n_id = $row['id'];
+        $query2 = "SELECT s.slika FROM slike s WHERE s.nepremicnina_id = ? ORDER BY id LIMIT 1";
+        $stmt2 = $pdo->prepare($query2);
+        $stmt2->execute([$n_id]);
+        $row2 = $stmt2->fetch();
+
         echo '<tr id="vrstica">';
-        echo '<td><a href="nepremicnina.php?id='.$row['id'].'"><img class="slika" src="data:;base64,' . base64_encode($row['slika']) .'"></a></td>';
+        echo '<td><a href="nepremicnina.php?id='.$row['id'].'"><img class="slika" src="data:;base64,' . base64_encode($row2['slika']) .'"></a></td>';
         echo '<td><a href="nepremicnina.php?id='.$row['id'].'">'.$row['ime'].'</a></td>';
         echo '<td>'.$row['ime_kraja'].'</td>';
         echo '<td>'.$row['posredovanje'].'</td>';

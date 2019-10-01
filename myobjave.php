@@ -50,14 +50,20 @@ include_once "header.php";
     <?php
     $text = "Ste prepričani, da želite izbrisati objavo nepremičnine?";
     
-    $query = "SELECT n.*, s.slika, u.id AS u_id, k.ime AS ime_kraja FROM nepremicnine n INNER JOIN uporabniki u ON u.id = n.uporabnik_id INNER JOIN slike s ON n.id = s.nepremicnina_id INNER JOIN kraji k ON k.id = n.kraj_id WHERE u.id = ? ORDER BY id DESC";
+    $query = "SELECT n.*, u.id AS u_id, k.ime AS ime_kraja FROM nepremicnine n INNER JOIN uporabniki u ON u.id = n.uporabnik_id INNER JOIN kraji k ON k.id = n.kraj_id WHERE u.id = ? ORDER BY id DESC";
     $stmt = $pdo->prepare($query);
     $stmt->execute([$_SESSION['user_id']]);
     //izvedlo se bo tolikokrat, koliko je vrstic rezultata
     //trenutno vrstico shrani v spremenljivko $row
     while ($row = $stmt->fetch()) {
+        $n_id = $row['id'];
+        $query2 = "SELECT s.slika FROM slike s WHERE s.nepremicnina_id = ? ORDER BY id LIMIT 1";
+        $stmt2 = $pdo->prepare($query2);
+        $stmt2->execute([$n_id]);
+        $row2 = $stmt2->fetch();
+
         echo '<tr id="vrstica">';
-        echo '<td><a href="nepremicnina.php?id='.$row['id'].'"><img class="slika" src="data:;base64,' . base64_encode($row['slika']) .'"></a></td>';
+        echo '<td><a href="nepremicnina.php?id='.$row['id'].'"><img class="slika" src="data:;base64,' . base64_encode($row2['slika']) .'"></a></td>';
         echo '<td><a href="nepremicnina.php?id='.$row['id'].'">'.$row['ime'].'</a></td>';
         echo '<td><a href="objava_edit.php?id='.$row['id'].'"><img alt="edit" src="img/edit.png" class="edit"></a></td>';
         echo '<td><a onclick="return confirm(\'Prepričani??\');" href="objava_del.php?id='.$row['id'].'"><img alt="remove" src="img/remove.png" class="remove"></a></td>';

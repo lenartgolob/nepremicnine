@@ -1,7 +1,6 @@
 <?php 
 include_once "session.php";
 include_once "database.php";
-
 if(isset($_SESSION['user_id']) && isset($_SESSION['email'])){
   $objava = "Objavi oglas";
   $linko = "objava_form.php";
@@ -98,7 +97,6 @@ else {
       <div class="row">
         <?php
         // Iz DB izberemo šest najnovejših oglasov in jih prikažemo kot portfolio grid
-
           $query = "SELECT n.ime, n.lokacija, s.slika, k.ime AS ime_kraja, u.ime AS uporabnik_ime, u.priimek, u.email FROM nepremicnine n INNER JOIN uporabniki u ON u.id = n.uporabnik_id INNER JOIN kraji k ON k.id = n.kraj_id INNER JOIN slike s ON n.id = s.nepremicnina_id ORDER BY n.objava DESC LIMIT 6";
           $stmt = $pdo->prepare($query);
           $stmt->execute();
@@ -143,7 +141,6 @@ $query = "SELECT n.*, s.slika, k.posta, k.ime AS ime_kraja, u.ime AS uporabnik_i
 $stmt = $pdo->prepare($query);
 $stmt->execute();
 for ($st = 1; $row = $stmt->fetch(); $st++) {
-
   switch ($row['posredovanje']) {
     case "Prodaja":
         $text = 'Naprodaj je ' . $row['tip'] . ' , ki je velika ' . $row['velikost'] . ' m<sup>2</sup>, nahaja se na naslovu ' . $row['naslov'] . ', parcela pa je velika ' . $row['parcela'] . ' m<sup>2</sup>.';
@@ -158,7 +155,6 @@ for ($st = 1; $row = $stmt->fetch(); $st++) {
     $text = 'Za najem se išče ' . $row['tip'] . ' , ki je velika okoli ' . $row['velikost'] . ' m<sup>2</sup>, nahaja se v okolici ' . $row['naslov'] . ', parcela pa je velika okoli ' . $row['parcela'] . ' m<sup>2</sup>. Spodnja slika je simbolična oz. približek željene nepremičnine.';
         break;
 }
-
 ?>
 
 
@@ -201,7 +197,6 @@ for ($st = 1; $row = $stmt->fetch(); $st++) {
   </div>
 
 <?php
-
 }
 ?>
 
