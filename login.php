@@ -1,5 +1,12 @@
 <?php
   require_once "config.php";
+  require_once "fb-config.php";
+
+  $redirectURL = 'http://localhost/nepremicnine/fb-callback.php';
+  $permissions = ['email'];
+  $fbLoginURL = $helper->getLoginUrl($redirectURL, $permissions);
+
+  
 
   $loginURL = $gClient -> createAuthUrl();
 ?>
@@ -49,6 +56,7 @@
 
 <?php
 include_once "header.php";
+
 ?>
 
   <div class="container" id="login-form">
@@ -83,7 +91,7 @@ include_once "header.php";
               <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Sign in</button>
               <hr class="my-4">
               <button onclick="window.location = '<?php echo $loginURL ?>'" class="btn btn-lg btn-google btn-block text-uppercase"><i class="fab fa-google mr-2"></i> Sign in with Google</button>
-              <button class="btn btn-lg btn-facebook btn-block text-uppercase" type="submit"><i class="fab fa-facebook-f mr-2"></i> Sign in with Facebook</button>
+              <button onclick="window.location = '<?php echo $fbLoginURL ?>'" class="btn btn-lg btn-facebook btn-block text-uppercase" type="submit"><i class="fab fa-facebook-f mr-2"></i> Sign in with Facebook</button>
             </form>
           </div>
         </div>
