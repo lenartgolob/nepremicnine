@@ -4,7 +4,7 @@
 
 ## Preview
 
-[![Nepremicnine.com](https://https://lenartgolob.com/nepremicnine/img/about/preview.png)]
+[![lenartgolob.com/nepremicnine](https://raw.githubusercontent.com/lenartgolob/nepremicnine/master/img/about/2019-10-08-11-57-lenartgolob.com.png)]
 (https://lenartgolob.com/nepremicnine)
 
 **[View Live Preview](https://blackrockdigital.github.io/startbootstrap-agency/)**
