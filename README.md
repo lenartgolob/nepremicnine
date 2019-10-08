@@ -4,32 +4,23 @@
 
 ## Preview
 
-[![lenartgolob.com/nepremicnine](https://raw.githubusercontent.com/lenartgolob/nepremicnine/master/img/about/2019-10-08-11-57-lenartgolob.com.png)]
-(https://lenartgolob.com/nepremicnine)
+![lenartgolob.com/nepremicnine](https://raw.githubusercontent.com/lenartgolob/nepremicnine/master/img/about/2019-10-08-11-57-lenartgolob.com.png)
 
-**[View Live Preview](https://blackrockdigital.github.io/startbootstrap-agency/)**
 
-## Status
-
-[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/BlackrockDigital/startbootstrap-agency/master/LICENSE)
-[![npm version](https://img.shields.io/npm/v/startbootstrap-agency.svg)](https://www.npmjs.com/package/startbootstrap-agency)
-[![Build Status](https://travis-ci.org/BlackrockDigital/startbootstrap-agency.svg?branch=master)](https://travis-ci.org/BlackrockDigital/startbootstrap-agency)
-[![dependencies Status](https://david-dm.org/BlackrockDigital/startbootstrap-agency/status.svg)](https://david-dm.org/BlackrockDigital/startbootstrap-agency)
-[![devDependencies Status](https://david-dm.org/BlackrockDigital/startbootstrap-agency/dev-status.svg)](https://david-dm.org/BlackrockDigital/startbootstrap-agency?type=dev)
+**[View Live Preview](https://lenartgolob.com/nepremicnine)**
 
 ## Download and Installation
 
-To begin using this template, choose one of the following options to get started:
-* [Download the latest release on Start Bootstrap](https://startbootstrap.com/template-overviews/agency/)
-* Install via npm: `npm i startbootstrap-agency`
+* Firt if you want this project to work you need an Apache and MySQL server, I personaly recommend XAMPP.
+* Download the files of this project or clone the repo: https://github.com/lenartgolob/nepremicnine.git
 * Clone the repo: `git clone https://github.com/BlackrockDigital/startbootstrap-agency.git`
 * [Fork, Clone, or Download on GitHub](https://github.com/BlackrockDigital/startbootstrap-agency)
 
 ## Usage
 
-### Basic Usage
+### Installation
 
-After downloading, simply edit the HTML and CSS files included with the template in your favorite text editor to make changes. These are the only files you need to worry about, you can ignore everything else! To preview the changes you make to the code, you can open the `index.html` file in your web browser.
+Firt if you want this project to work you need an Apache and MySQL server, I personaly recommend XAMPP.
 
 ### Advanced Usage
 
