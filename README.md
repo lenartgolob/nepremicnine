@@ -1,6 +1,6 @@
 # [Nepremicnine.com](https://lenartgolob.com/nepremicnine)
 
-[Agency](https://startbootstrap.com/template-overviews/agency/) is a one page agency portfolio theme for [Bootstrap](http://getbootstrap.com/) created by [Start Bootstrap](http://startbootstrap.com/). This theme features several content sections, a responsive portfolio grid with hover effects, full page portfolio item modals, a responsive timeline, and a working PHP contact form.
+[Nepremicnine.com](https://lenartgolob.com7nepremicnine) is a website made for selling, buying and trading with real estate. It was made for educational porpuses and it's a clone of an already existing website [nepremicnine.net](https://nepremicnine.net) is a one page agency portfolio theme for [Bootstrap](http://getbootstrap.com/) created by [Start Bootstrap](http://startbootstrap.com/). This theme features several content sections, a responsive portfolio grid with hover effects, full page portfolio item modals, a responsive timeline, and a working PHP contact form.
 
 ## Preview
 
