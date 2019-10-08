@@ -14,7 +14,7 @@
 * Firt if you want this project to work you need an Apache and MySQL server, I personaly recommend XAMPP.
 * Download the files of this project or `git clone https://github.com/lenartgolob/nepremicnine.git`
 * You must save the files in the htdocs file on the C: disk
-* Then you must install import the nepremicnine.sql file to phpMyAdmin so the database is created
+* Then you must import the file nepremicnine.sql to phpMyAdmin so the database is created
 * After that you can access the website via link localhost/nepremicnine
 
 ## Database
