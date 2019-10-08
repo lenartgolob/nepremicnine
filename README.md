@@ -15,6 +15,7 @@
 * Download the files of this project or `git clone https://github.com/lenartgolob/nepremicnine.git`
 * You must save the files in the htdocs file on the C: disk
 * Then you must import the file nepremicnine.sql to phpMyAdmin so the database is created
+* You can change the database configuration in the file database.php
 * After that you can access the website via link localhost/nepremicnine
 
 ## Database
@@ -24,3 +25,9 @@
 Keep in mind the structure of the database, while working on the project. The schema looks like this:
 
 ![Database schema](https://raw.githubusercontent.com/lenartgolob/nepremicnine/master/img/about/db-struct.PNG)
+
+## Special features
+
+* The search bar: You can for real estate by the name of the post, address, sale method, category and by both of the paragraphs.
+* Facebook login: FB login saves the users email, first name and last name into the database and it sets the password to facebook
+* Google login: Google login saves the users email, first name and last name into the database and it sets the password to facebook
