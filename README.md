@@ -30,4 +30,4 @@ Keep in mind the structure of the database, while working on the project. The sc
 
 * The search bar: You can for real estate by the name of the post, address, sale method, category and by both of the paragraphs.
 * Facebook login: FB login saves the users email, first name and last name into the database and it sets the password to facebook
-* Google login: Google login saves the users email, first name and last name into the database and it sets the password to facebook
+* Google login: Google login saves the users email, first name and last name into the database and it sets the password to google
