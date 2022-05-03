@@ -27,7 +27,6 @@ include_once "database.php";
 
   <!-- Custom styles for this template -->
   <link href="css/agency.min.css" rel="stylesheet">
-
 </head>
 
 <body id="page-top">
@@ -115,7 +114,114 @@ echo '<li>' . $row['telefon'] . '</li>';
 echo '<li>' . $row['email'] . '</li><br><br>';
 
 ?>
+  <div class="container my-5 py-5">
+    <div class="row d-flex justify-content-center">
+      <div class="col-md-15 col-lg-15">
+        <div class="card text-dark">
+          <div class="card-body p-4">
+            <h4 class="mb-0">Komentarji</h4>
+            <p class="fw-light mb-4 pb-2">Najnovejši komentarji</p>
 
+            <div class="d-flex flex-start">
+              <img class="rounded-circle shadow-1-strong me-3"
+                src="./img/team/profile.png" alt="avatar" width="60"
+                height="40" />
+              <div>
+                <h6 class="fw-bold mb-1">Maggie Marsh</h6>
+                <div class="d-flex align-items-center mb-3">
+                  <p class="mb-0">
+                    March 07, 2021
+                  </p>
+                  <a href="#!" class="link-muted"><i class="fas fa-pencil-alt ms-2"></i></a>
+                  <a href="#!" class="link-muted"><i class="fas fa-redo-alt ms-2"></i></a>
+                  <a href="#!" class="link-muted"><i class="fas fa-heart ms-2"></i></a>
+                </div>
+                <p class="mb-0">
+                  Lorem Ipsum is simply dummy text of the printing and typesetting
+                  industry. Lorem Ipsum has been the industry's standard dummy text ever
+                  since the 1500s, when an unknown printer took a galley of type and
+                  scrambled it.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <hr class="my-0" />
+
+          <div class="card-body p-4">
+            <div class="d-flex flex-start">
+              <img class="rounded-circle shadow-1-strong me-3"
+                src="./img/team/profile.png" alt="avatar" width="60"
+                height="40" />
+              <div>
+                <h6 class="fw-bold mb-1">Lara Stewart</h6>
+                <div class="d-flex align-items-center mb-3">
+                  <p class="mb-0">
+                    March 15, 2021
+                  </p>
+                  <a href="#!" class="link-muted"><i class="fas fa-pencil-alt ms-2"></i></a>
+                  <a href="#!" class="text-success"><i class="fas fa-redo-alt ms-2"></i></a>
+                  <a href="#!" class="link-danger"><i class="fas fa-heart ms-2"></i></a>
+                </div>
+                <p class="mb-0">
+                  Contrary to popular belief, Lorem Ipsum is not simply random text. It
+                  has roots in a piece of classical Latin literature from 45 BC, making it
+                  over 2000 years old. Richard McClintock, a Latin professor at
+                  Hampden-Sydney College in Virginia, looked up one of the more obscure
+                  Latin words, consectetur, from a Lorem Ipsum passage, and going through
+                  the cites.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <hr class="my-0" style="height: 1px;" />
+
+          <div class="card-body p-4">
+            <div class="d-flex flex-start">
+              <img class="rounded-circle shadow-1-strong me-3"
+                src="./img/team/profile.png" alt="avatar" width="60"
+                height="40" />
+              <div>
+                <h6 class="fw-bold mb-1">Alexa Bennett</h6>
+                <div class="d-flex align-items-center mb-3">
+                  <p class="mb-0">
+                    March 24, 2021
+                  </p>
+                  <a href="#!" class="link-muted"><i class="fas fa-pencil-alt ms-2"></i></a>
+                  <a href="#!" class="link-muted"><i class="fas fa-redo-alt ms-2"></i></a>
+                  <a href="#!" class="link-muted"><i class="fas fa-heart ms-2"></i></a>
+                </div>
+                <p class="mb-0">
+                  There are many variations of passages of Lorem Ipsum available, but the
+                  majority have suffered alteration in some form, by injected humour, or
+                  randomised words which don't look even slightly believable. If you are
+                  going to use a passage of Lorem Ipsum, you need to be sure.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <hr class="my-0" />
+
+          <div class="card-body p-4">
+            <a href="#"><p style="margin-bottom: 0;">Prikaži vse komentarje</p></a>
+          </div>
+
+          <hr class="my-0" />
+
+          <div class="card-body p-4">
+            <p>Napiši komentar:</p>
+            <form method="POST" action="komentar_insert.php" >
+              <textarea class="form-control" name="komentar" required> </textarea>
+              <input type="hidden" value="<?php echo $_GET["id"] ?>" name="nepremicnina_id" />
+              <button style="margin-top: 10px; float: right;" name="sbmt" type="submit" class="btn btn-primary">Objavi</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
 <?php
 include_once "footer.php";
