@@ -78,7 +78,6 @@ else {
     </div></a>
   </div> 
   </form>
-
 <script>
     function myFunction() {
       document.getElementById("myForm").submit();
@@ -97,10 +96,15 @@ else {
       <div class="row">
         <?php
         // Iz DB izberemo šest najnovejših oglasov in jih prikažemo kot portfolio grid
-          $query = "SELECT n.ime, n.lokacija, s.slika, k.ime AS ime_kraja, u.ime AS uporabnik_ime, u.priimek, u.email FROM nepremicnine n INNER JOIN uporabniki u ON u.id = n.uporabnik_id INNER JOIN kraji k ON k.id = n.kraj_id INNER JOIN slike s ON n.id = s.nepremicnina_id ORDER BY n.objava DESC LIMIT 6";
+          $query = "SELECT n.id, n.ime, n.lokacija, k.ime AS ime_kraja FROM nepremicnine n INNER JOIN kraji k ON k.id = n.kraj_id ORDER BY n.objava DESC LIMIT 6";
           $stmt = $pdo->prepare($query);
           $stmt->execute();
+
           for ($st = 1; $row = $stmt->fetch(); $st++) {
+            $query2 = "SELECT s.slika FROM slike s WHERE nepremicnina_id = ?";
+            $stmt2 = $pdo->prepare($query2);
+            $stmt2->execute([$row['id']]);
+            $row2 = $stmt2->fetch();
         ?>
         <div class="col-md-4 col-sm-6 portfolio-item">
           <a class="portfolio-link" data-toggle="modal" href="#portfolioModal<?php echo $st; ?>">
@@ -110,7 +114,7 @@ else {
               </div>
             </div>
             <div class="thumbnail">
-            <?php echo '<img class="imgdb2" src="data:;base64,' . base64_encode($row['slika']) .'">' ?>
+            <?php echo '<img class="imgdb2" src="data:;base64,' . base64_encode($row2['slika']) .'">' ?>
             </div>
           </a>
           <div class="portfolio-caption">
@@ -171,7 +175,7 @@ for ($st = 1; $row = $stmt->fetch(); $st++) {
             <div class="col-lg-8 mx-auto">
               <div class="modal-body">
                 <!-- Project Details Go Here -->
-                <h3 class="text-uppercase"><?php echo $row['ime'] ?></h3>
+                <h3 class="text-uppercase"><a href="<?php echo 'nepremicnina.php?id=' . $row['id'] ?>"><?php echo $row['ime'] ?></h3></a>
                 <h5 class="text-muted font-weight-light"><?php echo $row['ime_kraja'] . ', ' . $row['lokacija']?></h5>
                 <p class="item-intro text-justify"><?php echo $text ?></p>
                 <?php echo '<img class="imgdb" src="data:;base64,' . base64_encode($row['slika']) .'">' ?>

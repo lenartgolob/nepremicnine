@@ -75,10 +75,9 @@
            }
         ?>
         <div class="form-group">
-			<label class="checkbox-inline"><input type="checkbox" required="required"> I accept the <a href="#">Terms of Use</a> &amp; <a href="#">Privacy Policy</a></label>
 		</div>
 		<div class="form-group">
-            <button type="submit" class="btn btn-success btn-lg btn-block">Register Now</button>
+            <button style="background-color: #fed136; color: white;" type="submit" class="btn btn-lg btn-block">Register Now</button>
         </div>
     </form>
 </div>

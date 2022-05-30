@@ -10,11 +10,11 @@
   }
 }
 
-@media only screen and (max-width: 1700px) {
+/* @media only screen and (max-width: 1700px) {
   #search {
     display: none;
 }
-}
+} */
 
 .thumbnail {
   position: relative;
@@ -49,9 +49,12 @@ transition: all .5s;
 #search {
 position:absolute;
 top: 600px;
-left: 800px;
+margin-left: auto;
+margin-right: auto;
+left: 0;
+right: 0;
+text-align: center;
 width: 300px;
-
 }
 
 #lupa {

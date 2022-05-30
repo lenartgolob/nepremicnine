@@ -15,16 +15,16 @@ include_once "session.php";
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav text-uppercase ml-auto">
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="novogradnje.php">Novogradnje</a>
+            <a class="nav-link js-scroll-trigger" href="stanovanja.php">Stanovanja</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="montazne_hise.php">Montažne hiše</a>
+            <a class="nav-link js-scroll-trigger" href="hise.php">Hiše</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="pocitnice.php">Počitnice!</a>
+            <a class="nav-link js-scroll-trigger" href="vikendi.php">Vikendi</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="dom_gradnja.php">Dom</a>
+            <a class="nav-link js-scroll-trigger" href="pocitnice.php"> Na Počitnice!</a>
           </li>
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="podjetja.php">Podjetja</a>

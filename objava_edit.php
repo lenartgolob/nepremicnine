@@ -81,58 +81,44 @@ switch ($row['posredovanje']) {
 
 // Preverimo katera vrsta nepremicnine je izbrana in jo kasneje s pomočjo te spremenljivke nastavimo kot checked
 switch ($row['vrsta']) {
-    case "novogradnja":
-        $novogradnja = "checked";
+    case "stanovanje":
+        $stanovanje = "selected";
         $hisa = "";
-        $montazna = "";
         $vikend = "";
         $pocitniski = "";
         $poslovni = "";
         break;
 
     case "hisa":
-        $novogradnja = "";
-        $hisa = "checked";
-        $montazna = "";
-        $vikend = "";
-        $pocitniski = "";
-        $poslovni = "";
-        break;
-
-    case "montazna":
-        $novogradnja = "";
-        $hisa = "";
-        $montazna = "checked";
+        $stanovanje = "";
+        $hisa = "selected";
         $vikend = "";
         $pocitniski = "";
         $poslovni = "";
         break;
 
     case "vikend":
-        $novogradnja = "";
+        $stanovanje = "";
         $hisa = "";
-        $montazna = "";
-        $vikend = "checked";
+        $vikend = "selected";
         $pocitniski = "";
         $poslovni = "";
         break;
 
     case "pocitniski":
-        $novogradnja = "";
+        $stanovanje = "";
         $hisa = "";
-        $montazna = "";
         $vikend = "";
-        $pocitniski = "checked";
+        $pocitniski = "selected";
         $poslovni = "";
         break;
 
     case "poslovni":
-        $novogradnja = "";
+        $stanovanje = "";
         $hisa = "";
-        $montazna = "";
         $vikend = "";
         $pocitniski = "";
-        $poslovni = "checked";
+        $poslovni = "selected";
         break;
 }
 
@@ -161,7 +147,7 @@ switch ($row['tip']) {
         $drugo = "";
         break;
 
-    case "2-sobna nepremičnina":
+    case "2-sobno":
         $soba = "";
         $garsonjera = "";
         $sobna2 = "checked";
@@ -172,7 +158,7 @@ switch ($row['tip']) {
         $drugo = "";
         break;
 
-    case "3-sobna nepremičnina":
+    case "3-sobno":
         $soba = "";
         $garsonjera = "";
         $sobna2 = "";
@@ -183,7 +169,7 @@ switch ($row['tip']) {
         $drugo = "";
         break;
 
-    case "4-sobna nepremičnina":
+    case "4-sobno":
         $soba = "";
         $garsonjera = "";
         $sobna2 = "";
@@ -194,7 +180,7 @@ switch ($row['tip']) {
         $drugo = "";
         break;
 
-    case "5 in večsobna nepremičnina":
+    case "5-sobno":
         $soba = "";
         $garsonjera = "";
         $sobna2 = "";
@@ -205,7 +191,7 @@ switch ($row['tip']) {
         $drugo = "";
         break;
 
-    case "nepremičnina tipa apartma":
+    case "apartma":
         $soba = "";
         $garsonjera = "";
         $sobna2 = "";
@@ -216,7 +202,7 @@ switch ($row['tip']) {
         $drugo = "";
         break;
 
-    case "nepremičnina":
+    case "drugo":
         $soba = "";
         $garsonjera = "";
         $sobna2 = "";
@@ -236,7 +222,7 @@ switch ($row['tip']) {
                     <div class="card">
                         <div class="card-header"><h5>Edit oglas</h5></div>
                         <div class="card-body">
-                            <form name="my-form" action="objava_update.php?id=<?php echo $n_id; ?>" method="POST">
+                            <form name="my-form" action="objava_update.php?id=<?php echo $n_id; ?>" method="POST" enctype="multipart/form-data">
                                 <div class="form-group row">
                                     <label for="user_name" class="col-md-4 col-form-label text-md-right">Vrsta posredovanja:</label>
                                     <div class="col-md-6">
@@ -254,20 +240,16 @@ switch ($row['tip']) {
                                         <input type="text" id="naslov" value="<?php echo $row['ime'] ?>" class="form-control" name="ime">
                                     </div>
                                 </div>
-                                <?php echo $montazna; echo "<br>"; ; ?>
                                 <div class="form-group row">
                                     <label for="phone_number" class="col-md-4 col-form-label text-md-right">Vrsta nepremičnine:</label>
                                     <div class="col-md-6">
-                                        <table width="100%">
-                                            <tr>
-                                                <td><input type="radio" name="vrsta" value="novogradnja" <?php echo $novogradnja; ?>> Novogradnja </td>
-                                                <td><input type="radio" name="vrsta" value="hisa" <?php echo $hisa; ?>> Hiša </td>
-                                                <td><input type="radio" name="vrsta" value="montazna" <?php echo $montazna; ?>> Montažna hiša </td>
-                                            </tr>
-                                                <td><input type="radio" name="vrsta" value="vikend" <?php echo $vikend; ?>> Vikend </td>
-                                                <td> <input type="radio" name="vrsta" value="pocitniski" <?php echo $pocitniski; ?>> Počitniški objekt </td>
-                                                <td> <input type="radio" name="vrsta" value="poslovni" <?php echo $poslovni; ?>> Poslovni prostor </td>
-                                        </table>
+                                        <select name="vrsta" class="form-control" >
+                                            <option <?php echo $stanovanje; ?> value="stanovanje">Stanovanje</option>
+                                            <option <?php echo $hisa; ?> value="hisa">Hiša</option>
+                                            <option <?php echo $vikend; ?> value="vikend">Vikend</option>
+                                            <option <?php echo $pocitniski; ?> value="pocitniski">Počitniški objekt</option>
+                                            <option <?php echo $poslovni; ?> value="poslovni">Poslovni prostor</option>
+                                        </select>
                                     </div>
                                 </div>
 
@@ -356,6 +338,13 @@ switch ($row['tip']) {
                                 </div>
 
                                 <div class="form-group row">
+                                    <label for="present_address" class="col-md-4 col-form-label text-md-right">Cena:</label>
+                                    <div class="col-md-6">
+                                        <input type="number" id="present_address" value="<?php echo $row['cena']; ?>" name="cena" class="form-control" required>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
                                     <label for="permanent_address" class="col-md-4 col-form-label text-md-right">Opis (krajši paragraf):</label>
                                     <div class="col-md-6">
                                         <textarea class="form-control" <?php echo $row['opis1']; ?> name="opis1"> <?php echo $row['opis1']; ?> </textarea>
@@ -366,6 +355,12 @@ switch ($row['tip']) {
                                     <label for="permanent_address" class="col-md-4 col-form-label text-md-right">Opis (daljši paragraf):</label>
                                     <div class="col-md-6">
                                         <textarea class="form-control" name="opis2"> <?php echo $row['opis2']; ?> </textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-4 col-form-label text-md-right">Slike:</label>
+                                    <div class="col-md-6">
+                                        <input type="file" class="form-control" name="myfile[]" accept="image/jpeg, image/png, image/jpg" multiple required>   
                                     </div>
                                 </div>
                                     <div class="col-md-6 offset-md-4">

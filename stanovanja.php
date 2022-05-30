@@ -4,6 +4,8 @@ include_once "database.php";
 <!DOCTYPE html>
 <html lang="en">
 
+<head>
+
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
@@ -25,6 +27,9 @@ include_once "database.php";
 
   <!-- Custom styles for this template -->
   <link href="css/agency.min.css" rel="stylesheet">
+
+  <script src="js/sort.js"></script>
+
 
 </head>
 
@@ -118,7 +123,7 @@ include_once "header.php";
       }
       }
       ?>
-      <form name="sort-form" method="GET" action="pocitnice.php" >
+      <form name="sort-form" method="GET" action="stanovanja.php" >
           <select name="sort" id="sort" class="form-control" style="width: 180px;" >
             <option value="" selected disabled>Sort</option>
             <option <?php if(isset($_GET['sort'])) {echo $priceAsc;} ?> value="price-asc">cena naraščajoča</option>
@@ -154,25 +159,25 @@ include_once "header.php";
           $tip = '%';
         }
         if(!isset($_GET['sort'])) {
-          $query = "SELECT n.*, k.ime AS ime_kraja FROM nepremicnine n INNER JOIN kraji k ON k.id = n.kraj_id WHERE n.vrsta = 'pocitniski' AND n.posredovanje LIKE ? AND n.tip LIKE ? ORDER BY id DESC";
+          $query = "SELECT n.*, k.ime AS ime_kraja FROM nepremicnine n INNER JOIN kraji k ON k.id = n.kraj_id WHERE n.vrsta = 'stanovanje' AND n.posredovanje LIKE ? AND n.tip LIKE ? ORDER BY id DESC";
         }
         elseif($_GET['sort'] == "price-asc") {
-          $query = "SELECT n.*, k.ime AS ime_kraja FROM nepremicnine n INNER JOIN kraji k ON k.id = n.kraj_id WHERE n.vrsta = 'pocitniski' AND n.posredovanje LIKE ? AND n.tip LIKE ? ORDER BY n.cena";
+          $query = "SELECT n.*, k.ime AS ime_kraja FROM nepremicnine n INNER JOIN kraji k ON k.id = n.kraj_id WHERE n.vrsta = 'stanovanje' AND n.posredovanje LIKE ? AND n.tip LIKE ? ORDER BY n.cena";
         }
         elseif($_GET['sort'] == "price-desc") {
-          $query = "SELECT n.*, k.ime AS ime_kraja FROM nepremicnine n INNER JOIN kraji k ON k.id = n.kraj_id WHERE n.vrsta = 'pocitniski' AND n.posredovanje LIKE ? AND n.tip LIKE ? ORDER BY n.cena DESC";
+          $query = "SELECT n.*, k.ime AS ime_kraja FROM nepremicnine n INNER JOIN kraji k ON k.id = n.kraj_id WHERE n.vrsta = 'stanovanje' AND n.posredovanje LIKE ? AND n.tip LIKE ? ORDER BY n.cena DESC";
         }
         elseif($_GET['sort'] == "date") {
-          $query = "SELECT n.*, k.ime AS ime_kraja FROM nepremicnine n INNER JOIN kraji k ON k.id = n.kraj_id WHERE n.vrsta = 'pocitniski' AND n.posredovanje LIKE ? AND n.tip LIKE ? ORDER BY id DESC";
+          $query = "SELECT n.*, k.ime AS ime_kraja FROM nepremicnine n INNER JOIN kraji k ON k.id = n.kraj_id WHERE n.vrsta = 'stanovanje' AND n.posredovanje LIKE ? AND n.tip LIKE ? ORDER BY id DESC";
         }
         elseif($_GET['sort'] == "m2-asc") {
-          $query = "SELECT n.*, k.ime AS ime_kraja FROM nepremicnine n INNER JOIN kraji k ON k.id = n.kraj_id WHERE n.vrsta = 'pocitniski' AND n.posredovanje LIKE ? AND n.tip LIKE ? ORDER BY n.velikost";
+          $query = "SELECT n.*, k.ime AS ime_kraja FROM nepremicnine n INNER JOIN kraji k ON k.id = n.kraj_id WHERE n.vrsta = 'stanovanje' AND n.posredovanje LIKE ? AND n.tip LIKE ? ORDER BY n.velikost";
         }
         elseif($_GET['sort'] == "m2-desc") {
-          $query = "SELECT n.*, k.ime AS ime_kraja FROM nepremicnine n INNER JOIN kraji k ON k.id = n.kraj_id WHERE n.vrsta = 'pocitniski' AND n.posredovanje LIKE ? AND n.tip LIKE ? ORDER BY n.velikost DESC";
+          $query = "SELECT n.*, k.ime AS ime_kraja FROM nepremicnine n INNER JOIN kraji k ON k.id = n.kraj_id WHERE n.vrsta = 'stanovanje' AND n.posredovanje LIKE ? AND n.tip LIKE ? ORDER BY n.velikost DESC";
         }
         else {
-          $query = "SELECT n.*, k.ime AS ime_kraja FROM nepremicnine n INNER JOIN kraji k ON k.id = n.kraj_id WHERE n.vrsta = 'pocitniski' AND n.posredovanje LIKE ? AND n.tip LIKE ? ORDER BY id DESC";
+          $query = "SELECT n.*, k.ime AS ime_kraja FROM nepremicnine n INNER JOIN kraji k ON k.id = n.kraj_id WHERE n.vrsta = 'stanovanje' AND n.posredovanje LIKE ? AND n.tip LIKE ? ORDER BY id DESC";
         }
 
         $stmt = $pdo->prepare($query);
@@ -210,9 +215,11 @@ include_once "header.php";
     </table>
   </div>
 </div>
+
 <?php
 include_once "footer.php";
 ?>
+
 </body>
 
 </html>
@@ -269,16 +276,16 @@ $(document).ready(function() {
   });
 
   $('#prodaja').click(function(){
-    window.location.href = "pocitnice.php?posredovanje=prodaja";
+    window.location.href = "stanovanja.php?posredovanje=prodaja";
   });
   $('#nakup').click(function(){
-    window.location.href = "pocitnice.php?posredovanje=nakup";
+    window.location.href = "stanovanja.php?posredovanje=nakup";
   });
   $('#oddaja').click(function(){
-    window.location.href = "pocitnice.php?posredovanje=oddaja";
+    window.location.href = "stanovanja.php?posredovanje=oddaja";
   });
   $('#najem').click(function(){
-    window.location.href = "pocitnice.php?posredovanje=najem";
+    window.location.href = "stanovanja.php?posredovanje=najem";
   });
 
 
@@ -293,9 +300,9 @@ $(document).ready(function() {
       }
     });
     if(posredovanje) {
-      window.location.href = "pocitnice.php?posredovanje=" + posredovanjeValue + "&tip=soba";
+      window.location.href = "stanovanja.php?posredovanje=" + posredovanjeValue + "&tip=soba";
     } else {
-      window.location.href = "pocitnice.php?tip=soba";
+      window.location.href = "stanovanja.php?tip=soba";
     }
   });
   $('#2-sobno').click(function(){
@@ -308,9 +315,9 @@ $(document).ready(function() {
       }
     });
     if(posredovanje) {
-      window.location.href = "pocitnice.php?posredovanje=" + posredovanjeValue + "&tip=2-sobno";
+      window.location.href = "stanovanja.php?posredovanje=" + posredovanjeValue + "&tip=2-sobno";
     } else {
-      window.location.href = "pocitnice.php?tip=2-sobno";
+      window.location.href = "stanovanja.php?tip=2-sobno";
     }
   });
   $('#3-sobno').click(function(){
@@ -324,9 +331,9 @@ $(document).ready(function() {
       }
     });
     if(posredovanje) {
-      window.location.href = "pocitnice.php?posredovanje=" + posredovanjeValue + "&tip=3-sobno";
+      window.location.href = "stanovanja.php?posredovanje=" + posredovanjeValue + "&tip=3-sobno";
     } else {
-      window.location.href = "pocitnice.php?tip=3-sobno";
+      window.location.href = "stanovanja.php?tip=3-sobno";
     }
   });
   $('#4-sobno').click(function(){
@@ -340,9 +347,9 @@ $(document).ready(function() {
       }
     });
     if(posredovanje) {
-      window.location.href = "pocitnice.php?posredovanje=" + posredovanjeValue + "&tip=4-sobno";
+      window.location.href = "stanovanja.php?posredovanje=" + posredovanjeValue + "&tip=4-sobno";
     } else {
-      window.location.href = "pocitnice.php?tip=4-sobno";
+      window.location.href = "stanovanja.php?tip=4-sobno";
     }
   });
   $('#5-sobno').click(function(){
@@ -356,9 +363,9 @@ $(document).ready(function() {
       }
     });
     if(posredovanje) {
-      window.location.href = "pocitnice.php?posredovanje=" + posredovanjeValue + "&tip=5-sobno";
+      window.location.href = "stanovanja.php?posredovanje=" + posredovanjeValue + "&tip=5-sobno";
     } else {
-      window.location.href = "pocitnice.php?tip=5-sobno";
+      window.location.href = "stanovanja.php?tip=5-sobno";
     }
   });
   $('#garsonjera').click(function(){
@@ -372,9 +379,9 @@ $(document).ready(function() {
       }
     });
     if(posredovanje) {
-      window.location.href = "pocitnice.php?posredovanje=" + posredovanjeValue + "&tip=garsonjera";
+      window.location.href = "stanovanja.php?posredovanje=" + posredovanjeValue + "&tip=garsonjera";
     } else {
-      window.location.href = "pocitnice.php?tip=garsonjera";
+      window.location.href = "stanovanja.php?tip=garsonjera";
     }
   });
   $('#apartma').click(function(){
@@ -388,9 +395,9 @@ $(document).ready(function() {
       }
     });
     if(posredovanje) {
-      window.location.href = "pocitnice.php?posredovanje=" + posredovanjeValue + "&tip=apartma";
+      window.location.href = "stanovanja.php?posredovanje=" + posredovanjeValue + "&tip=apartma";
     } else {
-      window.location.href = "pocitnice.php?tip=apartma";
+      window.location.href = "stanovanja.php?tip=apartma";
     }
   });
   $('#drugo').click(function(){
@@ -404,9 +411,9 @@ $(document).ready(function() {
       }
     });
     if(posredovanje) {
-      window.location.href = "pocitnice.php?posredovanje=" + posredovanjeValue + "&tip=drugo";
+      window.location.href = "stanovanja.php?posredovanje=" + posredovanjeValue + "&tip=drugo";
     } else {
-      window.location.href = "pocitnice.php?tip=drugo";
+      window.location.href = "stanovanja.php?tip=drugo";
     }
   });
 </script>

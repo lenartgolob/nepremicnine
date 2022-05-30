@@ -44,7 +44,7 @@ include_once "header.php";
                     <div class="card">
                         <div class="card-header"><h5>Objavi oglas</h5><p></p></div>
                         <div class="card-body">
-                            <form name="my-form" action="objava_insert.php" method="POST">
+                            <form name="my-form" action="objava_insert.php" method="POST" enctype="multipart/form-data">
                                 <div class="form-group row">
                                     <label for="user_name" class="col-md-4 col-form-label text-md-right">Vrsta posredovanja:</label>
                                     <div class="col-md-6">
@@ -66,16 +66,13 @@ include_once "header.php";
                                 <div class="form-group row">
                                     <label for="phone_number" class="col-md-4 col-form-label text-md-right">Vrsta nepremičnine:</label>
                                     <div class="col-md-6">
-                                        <table width="100%">
-                                            <tr>
-                                                <td><input type="radio" name="vrsta" value="novogradnja" checked="checked"> Novogradnja </td>
-                                                <td><input type="radio" name="vrsta" value="hisa"> Hiša </td>
-                                                <td><input type="radio" name="vrsta" value="montazna" > Montažna hiša </td>
-                                            </tr>
-                                                <td><input type="radio" name="vrsta" value="vikend"> Vikend </td>
-                                                <td> <input type="radio" name="vrsta" value="pocitniski"> Počitniški objekt </td>
-                                                <td> <input type="radio" name="vrsta" value="poslovni"> Poslovni prostor </td>
-                                        </table>
+                                        <select name="vrsta" class="form-control" >
+                                            <option value="stanovanje">Stanovanje</option>
+                                            <option value="hisa">Hiša</option>
+                                            <option value="vikend">Vikend</option>
+                                            <option value="pocitniski">Počitniški objekt</option>
+                                            <option value="poslovni">Poslovni prostor</option>
+                                        </select>
                                     </div>
                                 </div>
 
@@ -86,13 +83,13 @@ include_once "header.php";
                                             <tr>
                                                 <td><input type="radio" name="tip" value="soba" checked="checked"> Soba </td>
                                                 <td><input type="radio" name="tip" value="garsonjera"> Garsonjera </td>
-                                                <td><input type="radio" name="tip" value="2-sobna nepremičnina" > 2-sobno </td>
-                                                <td><input type="radio" name="tip" value="3-sobna nepremičnina" > 3-sobno </td>
+                                                <td><input type="radio" name="tip" value="2-sobno" > 2-sobno </td>
+                                                <td><input type="radio" name="tip" value="3-sobno" > 3-sobno </td>
                                             </tr>
-                                                <td><input type="radio" name="tip" value="4-sobna nepremičnina"> 4-sobno </td>
-                                                <td> <input type="radio" name="tip" value="5 in večsobna nepremičnina"> 5 in večsobno </td>
-                                                <td> <input type="radio" name="tip" value="nepremičnina tipa apartma"> Apartma </td>
-                                                <td> <input type="radio" name="tip" value="nepremičnina"> Drugo </td>
+                                                <td><input type="radio" name="tip" value="4-sobno"> 4-sobno </td>
+                                                <td> <input type="radio" name="tip" value="5-sobno"> 5 in večsobno </td>
+                                                <td> <input type="radio" name="tip" value="apartma"> Apartma </td>
+                                                <td> <input type="radio" name="tip" value="drugo"> Drugo </td>
                                         </table>
                                     </div>
                                 </div>
@@ -119,14 +116,6 @@ include_once "header.php";
                                                }
                                         ?>
                                         </select>
-                                    </div>
-                                </div>
-
-                                <div class="form-group row">
-                                    <label for="user_name" class="col-md-4 col-form-label text-md-right">Država:</label>
-                                    <div class="col-md-6">
-                                        <input type="radio" name="drzava" value="Slovenija" checked="checked"> Slovenija <br>
-                                        <input type="radio" name="drzava" value="Hrvaška"> Hrvaška <br>
                                     </div>
                                 </div>
 
@@ -176,6 +165,12 @@ include_once "header.php";
                                     <label for="permanent_address" class="col-md-4 col-form-label text-md-right">Opis (daljši paragraf):</label>
                                     <div class="col-md-6">
                                         <textarea class="form-control" name="opis2" required> </textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-4 col-form-label text-md-right">Slike:</label>
+                                    <div class="col-md-6">
+                                        <input type="file" class="form-control" name="myfile[]" accept="image/jpeg, image/png, image/jpg" multiple required>   
                                     </div>
                                 </div>
                                     <div class="col-md-6 offset-md-4">

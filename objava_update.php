@@ -18,27 +18,42 @@ $velikost = $_POST['velikost'];
 $parcela = $_POST['parcela'];
 $opis1 = $_POST['opis1'];
 $opis2 = $_POST['opis2'];
+$cena = $_POST['cena'];
 $uporabnik_id = $_SESSION['user_id'];
 
 $n_id = $_GET['id'];
 $_SESSION['nepremicnina'] = $ime;
 $_SESSION['opis'] = $opis1;
 
-$query = "UPDATE nepremicnine SET ime=?, opis1=?, opis2=?, naslov=?, posredovanje=?, vrsta=?, tip=?, lokacija=?, telefon=?, velikost=?, parcela=?, kraj_id=? WHERE id = ?";
+$query = "UPDATE nepremicnine SET ime=?, opis1=?, opis2=?, naslov=?, posredovanje=?, vrsta=?, tip=?, lokacija=?, telefon=?, velikost=?, parcela=?, cena=?, kraj_id=? WHERE id = ?";
 $stmt = $pdo->prepare($query);
-$stmt->execute([$ime, $opis1, $opis2, $naslov, $posredovanje, $vrsta, $tip, $lokacija, $telefon, $velikost, $parcela, $kraj, $n_id]);
+$stmt->execute([$ime, $opis1, $opis2, $naslov, $posredovanje, $vrsta, $tip, $lokacija, $telefon, $velikost, $parcela, $cena, $kraj, $n_id]);
 
-
-/*
-$name = $_FILES['myfile']['name'];
-$type = $_FILES['myfile']['type'];
-$data = file_get_contents($_FILES['myfile']['tmp_name']);
-
-$query = "INSERT INTO slike (ime, tip, slika) VALUES (?, ?, ?)";
+$query = "DELETE FROM slike WHERE nepremicnina_id = ?";
 $stmt = $pdo->prepare($query);
-$stmt->execute([$name, $type, $data]);
-*/
-header("Location: slike_update.php?id=$n_id");
+$stmt->execute([$n_id]);
+
+$total = count($_FILES['myfile']['name']);
+
+// Loop through each file
+for( $i=0 ; $i < $total ; $i++ ) {
+
+  //Get the temp file path
+  $tmpFilePath = $_FILES['myfile']['tmp_name'][$i];
+
+  //Make sure we have a file path
+  if ($tmpFilePath != ""){
+    //Setup our new file path
+    $name = $_FILES['myfile']['name'][$i];
+    $type = $_FILES['myfile']['type'][$i];
+    $data = file_get_contents($_FILES['myfile']['tmp_name'][$i]);
+
+    $query = "INSERT INTO slike (ime, tip, slika, nepremicnina_id) VALUES (?, ?, ?, ?)";
+    $stmt = $pdo->prepare($query);
+    $stmt->execute([$name, $type, $data, $n_id]);
+  }
+}
+header("Location: index.php");
 
 
 

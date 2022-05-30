@@ -63,8 +63,8 @@ include_once "header.php";
     <div class="row">
       <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
         <div class="card card-signin my-5">
-          <div class="card-body">
-            <h5 class="card-title text-center">Sign In</h5>
+          <div style="background-color: #F2F3F7 !important;" class="card-body karta">
+            <h5 class="card-title text-center">Prijava</h5>
             <form class="form-signin" action="login_check.php" method="post">
               <div class="form-label-group">
                 <input type="email" id="inputEmail" class="form-control" name="email" required autofocus>

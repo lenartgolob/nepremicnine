@@ -27,6 +27,8 @@ include_once "database.php";
 
   <!-- Custom styles for this template -->
   <link href="css/agency.min.css" rel="stylesheet">
+  <script src="js/comments.js"></script>
+
 </head>
 
 <body id="page-top">
@@ -114,13 +116,77 @@ echo '<li>' . $row['telefon'] . '</li>';
 echo '<li>' . $row['email'] . '</li><br><br>';
 
 ?>
-  <div class="container my-5 py-5">
-    <div class="row d-flex justify-content-center">
-      <div class="col-md-15 col-lg-15">
+
+
+  <div id="comments" style="width: 100% !important;"  class="container my-5 py-5">
+    <div style="width: 100% !important;" class="row d-flex justify-content-center">
+      <div style="width: 100% !important;" class="col-md-15 col-lg-15">
         <div class="card text-dark">
           <div class="card-body p-4">
-            <h4 class="mb-0">Komentarji</h4>
-            <p class="fw-light mb-4 pb-2">Najnovejši komentarji</p>
+          <h4 class="mb-0">Komentarji</h4>
+            <p style="margin-bottom: 0 !important;" class="fw-light mb-4 pb-2">Najnovejši komentarji</p>
+          </div>
+
+          <hr class="my-0" />
+
+          <?php
+    
+    $query = "SELECT * FROM `komentarji` WHERE nepremicnina_id = ? ORDER BY datum DESC";
+    $stmt = $pdo->prepare($query);
+    $stmt->execute([$_GET['id']]);
+    //izvedlo se bo tolikokrat, koliko je vrstic rezultata
+    //trenutno vrstico shrani v spremenljivko $row
+    $st = 0;
+    while ($row = $stmt->fetch()) {
+      if($st == 3) {
+        if(!isset($_GET['comments'])) {
+          break;
+        }
+      }
+        $u_id = $row['uporabnik_id'];
+        $query2 = "SELECT u.ime, u.priimek FROM uporabniki u WHERE u.id = ? LIMIT 1";
+        $stmt2 = $pdo->prepare($query2);
+        $stmt2->execute([$u_id]);
+        $row2 = $stmt2->fetch();
+        $user = $row2['ime'] . ' ' . $row2['priimek'];
+        ?>
+        <div class="card-body p-4">
+          <div class="d-flex flex-start">
+            <img class="rounded-circle shadow-1-strong me-3" src="./img/team/profile.png" alt="avatar" width="45" height="40" />
+            <div style="width: 100% !important;">
+              <h6 class="fw-bold mb-1"><?php echo $user ?> </h6>
+              <div class="d-flex align-items-center justify-content-between mb-3">
+                <p class="mb-0"><?php echo $row['datum'] ?></p>
+                <?php
+                  if(isset($_SESSION['user_id']) && ($_SESSION['user_id'] == $row['uporabnik_id'] || (isset($_SESSION['tip']) && $_SESSION['tip'] == "admin"))) {
+                ?>
+                <div>
+                  <i style="cursor: pointer; color: #fed136;" onclick="editComment(<?php echo $row['id'] ?>)" class="fas fa-pencil-alt ms-2"></i>
+                  <i style="cursor: pointer; color: #fed136;" onclick="deleteComment(<?php echo $row['id'] ?>, <?php echo $_GET['id'] ?>)" class="fa fa-trash ms-2" aria-hidden="true"></i>
+                </div>
+                <?php
+                  }
+                ?>
+              </div>
+              <p id="<?php echo 'comm' . $row['id'] ?>" class="mb-0"><?php echo $row['komentar'] ?></p>
+              <?php echo '<div style="display: none;" id="editComm' . $row['id'] . '" >' ?>
+                <form method="POST" action="komentar_update.php" >
+                  <textarea class="form-control" name="komentar" required><?php echo $row['komentar'] ?></textarea>
+                  <input type="hidden" value="<?php echo $row["id"] ?>" name="id" />
+                  <input type="hidden" value="<?php echo $_GET["id"] ?>" name="n_id" />
+                  <button style="margin-top: 10px; float: right;" name="sbmt" type="submit" class="btn btn-primary">Objavi</button>
+              </form>
+            </div>
+            </div>
+          </div>
+        </div>
+        <hr class="my-0" />
+        <?php
+        $st++;
+    }
+    ?>
+<!-- 
+          <div class="card-body p-4">
 
             <div class="d-flex flex-start">
               <img class="rounded-circle shadow-1-strong me-3"
@@ -144,72 +210,26 @@ echo '<li>' . $row['email'] . '</li><br><br>';
                 </p>
               </div>
             </div>
-          </div>
+          </div> -->
 
           <hr class="my-0" />
 
           <div class="card-body p-4">
-            <div class="d-flex flex-start">
-              <img class="rounded-circle shadow-1-strong me-3"
-                src="./img/team/profile.png" alt="avatar" width="60"
-                height="40" />
-              <div>
-                <h6 class="fw-bold mb-1">Lara Stewart</h6>
-                <div class="d-flex align-items-center mb-3">
-                  <p class="mb-0">
-                    March 15, 2021
-                  </p>
-                  <a href="#!" class="link-muted"><i class="fas fa-pencil-alt ms-2"></i></a>
-                  <a href="#!" class="text-success"><i class="fas fa-redo-alt ms-2"></i></a>
-                  <a href="#!" class="link-danger"><i class="fas fa-heart ms-2"></i></a>
-                </div>
-                <p class="mb-0">
-                  Contrary to popular belief, Lorem Ipsum is not simply random text. It
-                  has roots in a piece of classical Latin literature from 45 BC, making it
-                  over 2000 years old. Richard McClintock, a Latin professor at
-                  Hampden-Sydney College in Virginia, looked up one of the more obscure
-                  Latin words, consectetur, from a Lorem Ipsum passage, and going through
-                  the cites.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <hr class="my-0" style="height: 1px;" />
-
-          <div class="card-body p-4">
-            <div class="d-flex flex-start">
-              <img class="rounded-circle shadow-1-strong me-3"
-                src="./img/team/profile.png" alt="avatar" width="60"
-                height="40" />
-              <div>
-                <h6 class="fw-bold mb-1">Alexa Bennett</h6>
-                <div class="d-flex align-items-center mb-3">
-                  <p class="mb-0">
-                    March 24, 2021
-                  </p>
-                  <a href="#!" class="link-muted"><i class="fas fa-pencil-alt ms-2"></i></a>
-                  <a href="#!" class="link-muted"><i class="fas fa-redo-alt ms-2"></i></a>
-                  <a href="#!" class="link-muted"><i class="fas fa-heart ms-2"></i></a>
-                </div>
-                <p class="mb-0">
-                  There are many variations of passages of Lorem Ipsum available, but the
-                  majority have suffered alteration in some form, by injected humour, or
-                  randomised words which don't look even slightly believable. If you are
-                  going to use a passage of Lorem Ipsum, you need to be sure.
-                </p>
-              </div>
-            </div>
+            <?php
+              if(isset($_GET['comments'])) {
+            ?>
+              <a href=<?php echo "nepremicnina.php?id=" . $_GET['id'] . "#comments"  ?>><p style="margin-bottom: 0;">Skrij komentarje</p></a>
+            <?php
+              } else {
+            ?>
+              <a href=<?php echo "nepremicnina.php?id=" . $_GET['id'] . "&comments=all#comments" ?>><p style="margin-bottom: 0;">Prikaži vse komentarje</p></a>
+            <?php    
+              }
+            ?>
           </div>
 
           <hr class="my-0" />
-
-          <div class="card-body p-4">
-            <a href="#"><p style="margin-bottom: 0;">Prikaži vse komentarje</p></a>
-          </div>
-
-          <hr class="my-0" />
-
+          <?php if(isset($_SESSION['user_id'])) { ?>
           <div class="card-body p-4">
             <p>Napiši komentar:</p>
             <form method="POST" action="komentar_insert.php" >
@@ -218,6 +238,7 @@ echo '<li>' . $row['email'] . '</li><br><br>';
               <button style="margin-top: 10px; float: right;" name="sbmt" type="submit" class="btn btn-primary">Objavi</button>
             </form>
           </div>
+          <?php } ?>
         </div>
       </div>
     </div>
